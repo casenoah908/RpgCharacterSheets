@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-vitals',
@@ -8,8 +7,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./vitals.component.css']
 })
 export class VitalsComponent implements OnInit {
-
-  faCoffee = faCoffee;
 
   constructor() { }
 

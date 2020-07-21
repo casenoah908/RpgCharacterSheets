@@ -11,8 +11,6 @@ import { EquipmentComponent } from './equipment/equipment.component';
 import { RacialTraitsComponent } from './racial-traits/racial-traits.component';
 import { ClassTraitsComponent } from './class-traits/class-traits.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +25,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
   ],
   imports: [
     BrowserModule,
-    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
