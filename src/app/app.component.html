@@ -9,19 +9,22 @@
 </head>
 
 <body>
-    <!-- bordered "sheet" -->
-    <div class="container-fluid w-75 sheet">
-      <app-header></app-header>
-      <app-vitals></app-vitals>
-      <app-skills></app-skills>
-      <app-weapons></app-weapons>
-      <!-- Might want the other categories seperate/before from spell lists -->
-      <app-equipment></app-equipment>
-      <app-racial-traits></app-racial-traits>
-      <app-spells></app-spells>
-      <app-class-traits></app-class-traits>
-    </div>
+  <!-- Popup Tutorial -->
+  <mat-card class="card1">
+    <mat-card-header>
+      <mat-card-title><h1>HELLO!</h1></mat-card-title>
+    </mat-card-header>
+    <hr>
+    <mat-card-content>
+      <button mat-raised-button (click)="openDialog()">Open Dialog</button>
+      <hr>
+      <strong>Result: {{dialogResult}}</strong>
+    </mat-card-content>
+  </mat-card>
+  <!-- End Popup Tutorial -->
 
+  <!-- <app-home-page></app-home-page> -->
+  <app-character-sheet></app-character-sheet>
 </body>
 
 </html>
