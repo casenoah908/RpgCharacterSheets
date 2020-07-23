@@ -1,4 +1,6 @@
 export class Requirements{
+    // class is changed to role
+    role: string;
     skills : Array<string>;
     armors : Array<string>;
     weapons : Array<string>;

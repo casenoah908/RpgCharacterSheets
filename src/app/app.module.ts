@@ -14,13 +14,14 @@ import { SpellsComponent } from './SheetSegments/spells/spells.component';
 import { EquipmentComponent } from './SheetSegments/equipment/equipment.component';
 import { RacialTraitsComponent } from './SheetSegments/racial-traits/racial-traits.component';
 import { ClassTraitsComponent } from './SheetSegments/class-traits/class-traits.component';
-import { PopupComponent } from './popup/popup.component';
 import { CharacterSheetComponent } from './character-sheet/character-sheet.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { ClassRacePopupComponent } from './Popups/class-race-popup/class-race-popup.component';
+import { SkillsPopupComponent } from './Popups/skills-popup/skills-popup.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,13 @@ import { MatCardModule } from '@angular/material/card';
     EquipmentComponent,
     RacialTraitsComponent,
     ClassTraitsComponent,
-    PopupComponent,
     CharacterSheetComponent,
     HomePageComponent,
+    ClassRacePopupComponent,
+    SkillsPopupComponent,
 
   ],
-  entryComponents: [PopupComponent],
+  entryComponents: [ClassRacePopupComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
