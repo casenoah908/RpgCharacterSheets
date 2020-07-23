@@ -1,9 +1,5 @@
 # RpgCharacterSheet
 
-https://casenoah908.github.io/RpgCharacterSheets/
-
-
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
 
 ## Development server
