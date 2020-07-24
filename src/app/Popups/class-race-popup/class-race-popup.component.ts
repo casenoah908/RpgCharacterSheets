@@ -20,16 +20,19 @@ import { SkillsPopupComponent } from '../skills-popup/skills-popup.component'
 export class ClassRacePopupComponent implements OnInit {
 
   requirements : Requirements;
+  selected : string = '';
 
   constructor(private requirementsService : RequirementsService, public thisDialogRef: MatDialogRef<ClassRacePopupComponent>, @Inject(MAT_DIALOG_DATA) public data: string, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     
   }
+  
+
 
 
   // submits class (and eventually race) and opens skills-popup
-  setClass(role){
+  submitClassRace(role){
     // submit class
     this.requirementsService.setReqClass(role);
     // use class to assign to personal requirements object

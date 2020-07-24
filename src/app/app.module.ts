@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import 'hammerjs';
 
@@ -22,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { ClassRacePopupComponent } from './Popups/class-race-popup/class-race-popup.component';
 import { SkillsPopupComponent } from './Popups/skills-popup/skills-popup.component';
+import { from } from 'rxjs';
+import { EquipmentPopupComponent } from './Popups/equipment-popup/equipment-popup.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,7 @@ import { SkillsPopupComponent } from './Popups/skills-popup/skills-popup.compone
     HomePageComponent,
     ClassRacePopupComponent,
     SkillsPopupComponent,
+    EquipmentPopupComponent,
 
   ],
   entryComponents: [ClassRacePopupComponent],
@@ -47,6 +51,7 @@ import { SkillsPopupComponent } from './Popups/skills-popup/skills-popup.compone
     MatDialogModule,
     MatCardModule,
     MatButtonModule,
+    FormsModule
   ],
   
   providers: [],

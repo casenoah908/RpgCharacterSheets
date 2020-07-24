@@ -12,7 +12,7 @@ export const ClassRequirements: Requirements[] = [
 
     // RANGER
     {
-        role: "ranger",
+        role: "Ranger",
 
         // Ranger choices include:
         skills: ['Animal Handling', 'Athletics', 'Insight',
@@ -20,7 +20,7 @@ export const ClassRequirements: Requirements[] = [
 
         armors: ["Scale Mail", "Leather Armor"],
 
-        weapons: ['two shortswords', 'two simple Melee Weapons'],
+        weapons: ['Two shortswords', 'Two simple Melee Weapons'],
 
         secondWeapons: ['Longbow and a Quiver of 20 Arrows'],
 

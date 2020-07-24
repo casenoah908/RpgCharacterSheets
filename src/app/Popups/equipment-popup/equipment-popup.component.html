@@ -1,0 +1,51 @@
+<div>
+    <h1>What do you have?</h1>
+    <hr>
+    <mat-dialog-content>
+        <p>Make the following choices for weapons and other equipment you get to start with.</p> 
+    <hr>
+    <br>
+
+    <!-- ARMOR CHOICE -->
+    <h4>Choose an Armor</h4>
+    <div class="row">
+        <ul *ngFor="let armor of requirements.armors">
+            <label for="armor"><input type="radio" name="armor">      {{armor}}</label>
+        </ul>
+    </div>
+
+    <!-- WEAPON 1 CHOICE -->
+    <h4>Choose a Weapon</h4>
+    <div class="row">
+        <ul *ngFor="let weapon of requirements.weapons">
+            <label for="weapon"><input type="radio" name="weapon">      {{weapon}}</label>
+        </ul>
+    </div>
+
+    <!-- WEAPON 2 CHOICE -->
+    <h4>Choose another Weapon</h4>
+    <div class="row">
+        <ul *ngFor="let secondWeapon of requirements.secondWeapons">
+            <label for="secondWeapon"><input type="radio" name="secondWeapon">      {{secondWeapon}}</label>
+        </ul>
+    </div>
+
+    <!-- PACK CHOICE -->
+    <h4>Choose a Pack</h4>
+    <div class="row">
+        <ul *ngFor="let pack of requirements.packs">
+            <label for="pack"><input type="radio" name="pack">      {{pack}}</label>
+        </ul>
+    </div>
+
+    <!-- example of how to grab data -->
+    <!-- <strong> {{data.role}}  </strong> -->
+    </mat-dialog-content>
+
+    <hr>
+
+
+    <mat-dialog-actions>
+        <button mat-raised-button >Choose Skills</button>
+    </mat-dialog-actions>
+</div>

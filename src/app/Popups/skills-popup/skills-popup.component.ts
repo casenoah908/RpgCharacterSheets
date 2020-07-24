@@ -2,6 +2,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Requirements } from 'src/app/CreationRequirements/Requirements';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
+import { from } from 'rxjs';
+import { EquipmentPopupComponent } from '../equipment-popup/equipment-popup.component';
 
 @Component({
   selector: 'app-skills-popup',
@@ -16,10 +20,33 @@ export class SkillsPopupComponent implements OnInit {
 
   requirements: Requirements;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Requirements) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Requirements, public thisDialogRef: MatDialogRef<SkillsPopupComponent>, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.requirements = this.data;
+  }
+
+  checkCount: number = 0;
+  checkLimit(event, checkBox){
+    if(event.target.checked == true){
+      if(this.checkCount < 3){
+        this.checkCount++;
+      }else{
+        event.target.checked = false;
+      }
+    }else{
+      this.checkCount--;
+    }
+  }
+
+  openEquipmentPopup(){
+    let dialogRef = this.dialog.open(EquipmentPopupComponent, {
+      // size of popup
+      width: '600px',
+      // data that gets passed to popup (requirements object)
+      data: this.requirements
+    });
+    this.thisDialogRef.close();
   }
 
 }

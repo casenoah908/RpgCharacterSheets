@@ -1,18 +1,96 @@
 <div>
-    <h2 mat-dialog-title>MY DIALOG</h2>
+    <h1>Who are you?</h1>
     <hr>
-    <mat-dialog-content>
-        This text was defined in the popup component itself
+        <p>Choose the following defining character classifications:</p> 
+    <hr>
     <br>
+
+
+    <!-- NAME -->
+    <div class="row">
+        <div class="col">
+            <label for="characterName">Character Name: </label>
+        </div>
+        <div class="col">
+            <input type="text" id="characterName">
+        </div>
+    </div>
     <br>
-    <strong>{{data}}</strong>
-    </mat-dialog-content>
+
+
+    <!-- CLASS -->
+    <div class="row">
+        <div class="col">
+            <label for="classes">Character Class: </label>
+        </div>
+        <div class="col">
+            <select [(ngModel)]="selected" name="classes" id="classes" >    
+                <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                <option value="Ranger">Ranger</option>
+            </select>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- RACE -->
+    <div class="row">
+        <div class="col">
+            <label for="races">Character Race: </label>
+        </div>
+        <div class="col">
+            <select name="races" id="races">    
+                <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                <option value="elf">Elf</option>
+            </select>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- BACKGROUND -->
+    <div class="row">
+        <div class="col">
+            <label for="background">Character Background: </label>
+        </div>
+        <div class="col">
+            <select name="background" id="background">    
+                <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                <option value="custom">Custom</option>
+                <option value="soldier">Soldier</option>
+            </select>
+        </div>
+    </div>
+    <br>
+
+
+    <!-- ALIGNMENT -->
+    <div class="row">
+        <div class="col">
+            <label for="alignment">Character Alignment: </label>
+        </div>
+        <div class="col">
+            <select name="alignment" id="alignment">    
+                <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                <option value="lawfulGood">Lawful Good</option>
+                <option value="neutralGood">Neutral Good</option>
+                <option value="chaoticGood">Chaotic Good</option>
+                <option value="lawfulNeutral">Lawful Neutral</option>
+                <option value="neutral">Neutral</option>
+                <option value="chaoticNeutral">Chaotic Neutral</option>
+                <option value="lawfulEvil">Lawful Evil</option>
+                <option value="neutralEvil">Neutral Evil</option>
+                <option value="chaoticEvil">Chaotic Evil</option>
+            </select>
+        </div>
+    </div>
+
     <hr>
     <mat-dialog-actions>
         <!-- <button mat-raised-button (click)="onCloseConfirm()">CONFIRM</button>
         <button mat-raised-button (click)="onCloseCancel()">CANCEL</button>
          -->
 
-        <button mat-raised-button (click)="setClass('ranger')">Choose Class</button>
+        <button mat-raised-button (click)="submitClassRace(selected)">Submit</button>
     </mat-dialog-actions>
 </div>
