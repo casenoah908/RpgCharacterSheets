@@ -19,17 +19,19 @@ export class SkillsPopupComponent implements OnInit {
   // @Input() data: Requirements;
 
   requirements: Requirements;
+  limit: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: Requirements, public thisDialogRef: MatDialogRef<SkillsPopupComponent>, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.requirements = this.data;
+    this.limit = Number(this.requirements.skills[0]); //This is the problem
   }
 
   checkCount: number = 0;
   checkLimit(event, checkBox){
     if(event.target.checked == true){
-      if(this.checkCount < 3){
+      if(this.checkCount < this.limit){
         this.checkCount++;
       }else{
         event.target.checked = false;

@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dial
 import { Requirements } from '../../CreationRequirements/Requirements';
 import { from } from 'rxjs';
 
+import { Level1PopupComponent } from '../level1-popup/level1-popup.component';
+
 
 
 @Component({
@@ -19,6 +21,16 @@ export class EquipmentPopupComponent implements OnInit {
 
   ngOnInit(): void {
     this.requirements = this.data;
+  }
+
+  openLevel1Popup(){
+    let dialogRef = this.dialog.open(Level1PopupComponent, {
+      // size of popup
+      width: '800px',
+      // data that gets passed to popup (requirements object)
+      data: this.requirements
+    });
+    this.thisDialogRef.close();
   }
 
   

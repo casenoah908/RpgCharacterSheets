@@ -2,12 +2,12 @@
     <h1>What are you good at?</h1>
     <hr>
     <mat-dialog-content>
-        <p>Pick some skills that you want to be proficient in. </p> 
+        <p>Pick {{requirements.skills[0]}} skills that you want to be proficient in. </p> 
     <hr>
     <br>
 
     <!-- list of checkboxes buttons -->
-    <ul *ngFor="let skill of requirements.skills">
+    <ul *ngFor="let skill of requirements.skills | slice:1">
         <label for="skill"><input type="checkbox" (change)="checkLimit($event, checkbox)">      {{skill}}  </label>
     </ul>
 
@@ -21,4 +21,5 @@
     <mat-dialog-actions>
         <button mat-raised-button (click)="openEquipmentPopup()">Choose Skills</button>
     </mat-dialog-actions>
+    <br>
 </div>

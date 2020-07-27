@@ -25,6 +25,7 @@ import { ClassRacePopupComponent } from './Popups/class-race-popup/class-race-po
 import { SkillsPopupComponent } from './Popups/skills-popup/skills-popup.component';
 import { from } from 'rxjs';
 import { EquipmentPopupComponent } from './Popups/equipment-popup/equipment-popup.component';
+import { Level1PopupComponent } from './Popups/level1-popup/level1-popup.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { EquipmentPopupComponent } from './Popups/equipment-popup/equipment-popu
     ClassRacePopupComponent,
     SkillsPopupComponent,
     EquipmentPopupComponent,
+    Level1PopupComponent,
 
   ],
   entryComponents: [ClassRacePopupComponent],

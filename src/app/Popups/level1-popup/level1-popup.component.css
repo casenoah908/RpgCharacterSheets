@@ -1,0 +1,23 @@
+p{
+    text-indent: 25px;
+}
+
+select{
+    margin-left: 10px;
+}
+
+label{
+    font-weight: bold;
+}
+
+.tldr{
+    text-indent: 0px;
+}
+
+button{
+    background-color: #90EE90;
+}
+
+select{
+    padding-left: 5px;
+}

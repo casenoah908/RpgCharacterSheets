@@ -1,10 +1,10 @@
-import { Weapon } from "../weapon";
+import { Weapon } from "./weapon";
 
 export interface Character{
     // header component
     name: string;
     race: string;
-    class: string; 
+    role: string; 
     level: number; //preset
     xp: number; //preset
     background: string;

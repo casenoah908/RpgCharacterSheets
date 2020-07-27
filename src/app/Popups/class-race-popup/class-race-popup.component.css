@@ -3,11 +3,15 @@ label{
     font-weight: bold;
 }
 
-p{
-    font-size: large;
-}
 select{
     width: 182px;
 }
 
+select{
+    padding-left: 5px;
+}
+
+input{
+    padding-left: 5px;
+}
 

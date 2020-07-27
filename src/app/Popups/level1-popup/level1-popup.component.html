@@ -1,0 +1,43 @@
+<div>
+    <h1>What makes a {{requirements.role}} a {{requirements.role}}?</h1>
+    <hr>
+    <mat-dialog-content>
+        <p class="tldr">You get a couple of abilities that come with the class you chose</p>
+        <hr>
+        <br>
+
+
+        <!-- First Ability -->
+        <h4>{{requirements.level1Desc[0]}}</h4>
+        <p>{{requirements.level1Desc[1]}}</p>
+                <label for="choices">Make your choice: </label>
+                <select name="choices" id="choices">
+                    <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                    <option value="monster" *ngFor="let choice of requirements.level1Choices[0]">{{choice}}</option>
+                </select>
+
+        <hr>
+
+        <!-- Second Ability -->
+        <h4>{{requirements.level1Desc[2]}}</h4>
+        <p>{{requirements.level1Desc[3]}}</p>
+        <ul *ngFor="let addition of requirements.level1Desc | slice:4">
+            <li>{{addition}}</li>
+        </ul>
+                <label for="choices">Make your choice: </label>
+                <select name="choices" id="choices">
+                    <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                    <option value="monster" *ngFor="let choice of requirements.level1Choices[1]">{{choice}}</option>
+                </select>
+    </mat-dialog-content>
+    <br>
+
+    <hr>
+
+
+
+    <mat-dialog-actions>
+        <button mat-raised-button>Create Character</button>
+    </mat-dialog-actions>
+    <br>
+</div>

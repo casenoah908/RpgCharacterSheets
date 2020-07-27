@@ -9,7 +9,7 @@ export const ClassCharData: Character[] = [
     {
         name: "",
         race: "",
-        class: "ranger",
+        role: "ranger",
         level: 1,
         xp: 0,
         background: "",
