@@ -1,11 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Requirements } from 'src/app/CreationRequirements/Requirements';
 
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { from } from 'rxjs';
 import { EquipmentPopupComponent } from '../equipment-popup/equipment-popup.component';
+import { Character } from 'src/app/CharacterGen/character';
 
 @Component({
   selector: 'app-skills-popup',
@@ -18,13 +19,15 @@ export class SkillsPopupComponent implements OnInit {
   // so this probably isnt going to work with @Input
   // @Input() data: Requirements;
 
+  character: Character;
   requirements: Requirements;
   limit: number;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Requirements, public thisDialogRef: MatDialogRef<SkillsPopupComponent>, public dialog: MatDialog) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<SkillsPopupComponent>, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.requirements = this.data;
+    this.requirements = this.data.dialogRequirements;
+    this.character = this.data.dialogCharacter;
     this.limit = Number(this.requirements.skills[0]); //This is the problem
   }
 
@@ -46,7 +49,10 @@ export class SkillsPopupComponent implements OnInit {
       // size of popup
       width: '600px',
       // data that gets passed to popup (requirements object)
-      data: this.requirements
+      data: {
+        dialogRequirements: this.requirements,
+        dialogCharacter: this.character
+      }
     });
     this.thisDialogRef.close();
   }

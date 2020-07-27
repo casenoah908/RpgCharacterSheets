@@ -12,7 +12,7 @@
             <label for="characterName">Character Name: </label>
         </div>
         <div class="col">
-            <input type="text" id="characterName">
+            <input type="text" id="characterName" [(ngModel)]="name">
         </div>
     </div>
     <br>
@@ -24,7 +24,7 @@
             <label for="classes">Character Class: </label>
         </div>
         <div class="col">
-            <select [(ngModel)]="selected" name="classes" id="classes" >    
+            <select [(ngModel)]="role" name="classes" id="classes" >    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
                 <option value="Ranger">Ranger</option>
             </select>
@@ -39,7 +39,7 @@
             <label for="races">Character Race: </label>
         </div>
         <div class="col">
-            <select name="races" id="races">    
+            <select name="races" id="races" [(ngModel)]="race">    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
                 <option value="elf">Elf</option>
             </select>
@@ -54,7 +54,7 @@
             <label for="background">Character Background: </label>
         </div>
         <div class="col">
-            <select name="background" id="background">    
+            <select name="background" id="background" [(ngModel)]="background">    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
                 <option value="custom">Custom</option>
                 <option value="soldier">Soldier</option>
@@ -70,7 +70,7 @@
             <label for="alignment">Character Alignment: </label>
         </div>
         <div class="col">
-            <select name="alignment" id="alignment">    
+            <select name="alignment" id="alignment" [(ngModel)]="alignment">    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
                 <option value="lawfulGood">Lawful Good</option>
                 <option value="neutralGood">Neutral Good</option>
@@ -87,7 +87,7 @@
 
     <hr>
     <mat-dialog-actions>
-        <button mat-raised-button (click)="submitClassRace(selected)">Submit</button>
+        <button mat-raised-button (click)="submitClassRace(role)">Submit</button>
     </mat-dialog-actions>
     <br>
 </div>

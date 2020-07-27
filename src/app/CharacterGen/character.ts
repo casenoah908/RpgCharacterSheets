@@ -1,6 +1,7 @@
 import { Weapon } from "./weapon";
+import { summaryForJitFileName } from '@angular/compiler/src/aot/util';
 
-export interface Character{
+export class Character{
     // header component
     name: string;
     race: string;
@@ -58,5 +59,11 @@ export interface Character{
     // class abilities
     levelAbilities: Array<string>; 
 
+    
+
+    
+    
+    
 
 }
+
