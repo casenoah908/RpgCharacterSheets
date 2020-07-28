@@ -23,7 +23,7 @@ export class GenerationService {
     getCharacter(){
         var character: Character; //This doesn't appear to make it void
         this.ClassData.forEach(item => {
-            if(item.role == this.currentClass){
+            if(item.getRole() == this.currentClass){
                 character = item;
             }
         })

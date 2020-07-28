@@ -60,11 +60,10 @@ export class ClassRacePopupComponent implements OnInit {
     // use class to grab specific character object
     this.character = this.generationService.getCharacter();
     // except now we have to assign the user input in this popup to their respective properties
-    //This isnt working
-    this.character.name = this.name;
-    this.character.race = this.race;
-    this.character.background = this.background;
-    this.character.alignment = this.alignment;
+    this.character.setName(this.name);
+    this.character.setRace(this.race);
+    this.character.setBackground(this.background);
+    this.character.setAlignment(this.alignment);
 
     let dialogRef = this.dialog.open(SkillsPopupComponent, {
       // size of popup
