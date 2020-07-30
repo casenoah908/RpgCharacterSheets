@@ -15,8 +15,10 @@ import { GenerationService } from '../../CharacterGen/generation.service';
 import { Character } from '../../CharacterGen/character';
 
 // components
-import { SkillsPopupComponent } from '../skills-popup/skills-popup.component'
+import { StatsPopupComponent } from '../stats-popup/stats-popup.component';
+
 import { ClassCharData } from '../../CharacterGen/ClassCharData';
+import { Race } from 'src/app/CharacterGen/race';
 
 
 @Component({
@@ -28,6 +30,7 @@ export class ClassRacePopupComponent implements OnInit {
 
   character : Character;
   requirements : Requirements;
+  raceInfo: Race;
 
   //character generation properties
   name : string = '';
@@ -48,30 +51,37 @@ export class ClassRacePopupComponent implements OnInit {
 
 
   // submits class (and eventually race) and opens skills-popup
-  submitClassRace(role){
+  submitClassRace(){
     // submit class
-    this.requirementsService.setReqClass(role);
+    this.requirementsService.setReqClass(this.role);
     // use class to assign to grab specific requirements object
     this.requirements = this.requirementsService.getClassRequirements();
 
     // now do the same but for a charData object
     //submit class
-    this.generationService.setCharClass(role);
+    this.generationService.setCharClass(this.role);
     // use class to grab specific character object
-    this.character = this.generationService.getCharacter();
+    this.character = this.generationService.getCharacterInfo();
     // except now we have to assign the user input in this popup to their respective properties
     this.character.setName(this.name);
-    this.character.setRace(this.race);
+    this.character.setRace(this.race); //THIS WILL DO QUITE A BIT LATER
     this.character.setBackground(this.background);
     this.character.setAlignment(this.alignment);
 
-    let dialogRef = this.dialog.open(SkillsPopupComponent, {
+
+    //finally, set and get hardcoded, raceInfo
+    this.generationService.setRace(this.race);
+    this.raceInfo = this.generationService.getRaceInfo();
+
+
+    let dialogRef = this.dialog.open(StatsPopupComponent, {
       // size of popup
       width: '600px',
       // data that gets passed to popup (requirements object)
       data: {
         dialogRequirements: this.requirements,
-        dialogCharacter: this.character
+        dialogCharacter: this.character,
+        dialogRaceInfo: this.raceInfo
       }
     });
     this.thisDialogRef.close();

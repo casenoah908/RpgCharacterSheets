@@ -7,6 +7,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { from } from 'rxjs';
 import { EquipmentPopupComponent } from '../equipment-popup/equipment-popup.component';
 import { Character } from 'src/app/CharacterGen/character';
+import { Race } from 'src/app/CharacterGen/race';
 
 @Component({
   selector: 'app-skills-popup',
@@ -21,6 +22,7 @@ export class SkillsPopupComponent implements OnInit {
 
   character: Character;
   requirements: Requirements;
+  raceInfo: Race;
   limit: number;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<SkillsPopupComponent>, public dialog: MatDialog) { }
@@ -28,30 +30,48 @@ export class SkillsPopupComponent implements OnInit {
   ngOnInit(): void {
     this.requirements = this.data.dialogRequirements;
     this.character = this.data.dialogCharacter;
+    this.raceInfo = this.data.dialogRaceInfo;
     this.limit = Number(this.requirements.skills[0]); //This is the problem
   }
 
   checkCount: number = 0;
-  checkLimit(event, checkBox){
+  editSkillProfs(event, skill: string){
+    //if checked
     if(event.target.checked == true){
+      //check limit
       if(this.checkCount < this.limit){
+        //add to proficiencies
+        this.character.addSkillProfs(skill);
+        //raise limit
         this.checkCount++;
+      //if limit woulld be exceeded
       }else{
+        //refuse selection
         event.target.checked = false;
       }
+    //if unchecked
     }else{
+      //remove from proficiencies
+      this.character.removeSkillProfs(skill);
+      //decrease limit
       this.checkCount--;
     }
   }
 
   openEquipmentPopup(){
+
+    //asign character values
+
+
+
     let dialogRef = this.dialog.open(EquipmentPopupComponent, {
       // size of popup
       width: '600px',
       // data that gets passed to popup (requirements object)
       data: {
         dialogRequirements: this.requirements,
-        dialogCharacter: this.character
+        dialogCharacter: this.character,
+        dialogRaceInfo: this.raceInfo
       }
     });
     this.thisDialogRef.close();

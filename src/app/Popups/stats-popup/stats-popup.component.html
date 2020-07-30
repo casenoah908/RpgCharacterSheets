@@ -1,0 +1,72 @@
+<div>
+    <h1>What makes you unique?</h1>
+    <hr>
+    <mat-dialog-content>
+        <p>Roll and assign your character's statistic scores. </p> 
+    <hr>
+
+    <div class="row rollResults">
+        <button (click)="rollStats()">Roll</button> <h6 *ngIf="rolled"><strong>Results:  </strong> {{rolledStrength}}  |  {{rolledDexterity}}  |  {{rolledConstitution}}  |  {{rolledIntelligence}}  |  {{rolledWisdom}}  |  {{rolledCharisma}}</h6>
+    </div>
+
+    <hr>
+
+    <!-- Row 1: Strength, Dexterity, Constitution -->
+    <div class="row">
+        <div class="col">
+            <h5>Strength</h5>
+            <input type="text" name="strength" id="strength" [(ngModel)]="strength" (input)="updateStrengthMod()">
+            <h6>mod: {{strengthMod}}</h6>
+        </div>
+        <div class="col">
+            <h5>Dexterity</h5>
+            <input type="text" name="dexterity" id="dexterity" [(ngModel)]="dexterity" (input)="updateDexterityMod()">
+            <h6>mod: {{dexterityMod}}</h6>
+        </div>
+        <div class="col">
+            <h5>Constitution</h5>
+            <input type="text" name="constitution" id="constitution" [(ngModel)]="constitution" (input)="updateConstitutionMod()">
+            <h6>mod: {{constitutionMod}}</h6>
+        </div>
+    </div>
+
+    <br>
+
+    <!-- Row 2: Intelligence, Wisdom, Charisma -->
+    <div class="row">
+        <div class="col">
+            <h5>Intelligence</h5>
+            <input type="text" name="intelligence" id="intelligence" [(ngModel)]="intelligence" (input)="updateIntelligenceMod()">
+            <h6>mod: {{intelligenceMod}}</h6>
+        </div>
+        <div class="col">
+            <h5>Widsom</h5>
+            <input type="text" name="wisdom" id="wisdom" [(ngModel)]="wisdom" (input)="updateWisdomMod()">
+            <h6>mod: {{wisdomMod}}</h6>
+        </div>
+        <div class="col">
+            <h5>Charisma</h5>
+            <input type="text" name="charisma" id="charisma" [(ngModel)]="charisma" (input)="updateCharismaMod()">
+            <h6>mod: {{charismaMod}}</h6>
+        </div>
+    </div>
+    
+    <hr>
+
+
+    <div class="row bonuses">
+        <h5>Racial Bonus:</h5><p *ngIf="strBonus!=0">Strength: +{{strBonus}}</p><p *ngIf="dexBonus!=0">  Dexterity: +{{dexBonus}}</p><p *ngIf="conBonus!=0">  Constitution: +{{conBonus}}</p><p *ngIf="intBonus!=0">  Intelligence: +{{intBonus}}</p><p *ngIf="wisBonus!=0">  Wisdom: +{{wisBonus}}</p><p *ngIf="charBonus!=0">  Charisma: +{{charBonus}}</p>
+    </div>
+    <p style="font-size: small;">(Bonuses NOT applied to rolls)</p>
+
+
+    </mat-dialog-content>
+
+    <hr>
+
+
+    <mat-dialog-actions>
+        <button mat-raised-button (click)="openSkillsPopup()">Choose Statistics</button>
+    </mat-dialog-actions>
+    <br>
+</div>

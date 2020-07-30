@@ -1,5 +1,12 @@
+<!-- We may need to open different divs based on class, 
+    so that different classes have different popups with different logic -->
+
+    <!-- RANGER -->
+    <!-- put ngIf class==ranger in this div -->
 <div>
     <h1>What makes a {{requirements.role}} a {{requirements.role}}?</h1>
+    <!-- Equipment popup Testing -->
+    <!-- <h2>{{someArmors[0]}} + {{someWeapons[0]}} + {{someWeapons[1]}} + {{somePacks[0]}} + {{someArmors[1]}} + {{someWeapons[2]}} + {{someWeapons[3]}} + {{somePacks[1]}}</h2> -->
     <hr>
     <mat-dialog-content>
         <p class="tldr">You get a couple of abilities that come with the class you chose</p>
@@ -10,13 +17,16 @@
         <!-- First Ability -->
         <h4>{{requirements.level1Desc[0]}}</h4>
         <p>{{requirements.level1Desc[1]}}</p>
-                <label for="choices">Make your choice: </label>
-                <select name="choices" id="choices">
-                    <!-- Will need to *ngFor the dropdown for when multiple exist -->
-                    <option value="monster" *ngFor="let choice of requirements.level1Choices[0]">{{choice}}</option>
-                </select>
+        <label for="choice1">Make your choice: </label>
+        <select name="choice1" id="choices" [(ngModel)]="selectedChoice1">
+            <option name="choice1" value="{{choice}}" *ngFor="let choice of requirements.level1Choices[0]">{{choice}}
+            </option>
+        </select>
+        <!-- name="armor" value="{{armor}}" [(ngModel)]="selectedArmor" -->
+
 
         <hr>
+
 
         <!-- Second Ability -->
         <h4>{{requirements.level1Desc[2]}}</h4>
@@ -24,11 +34,13 @@
         <ul *ngFor="let addition of requirements.level1Desc | slice:4">
             <li>{{addition}}</li>
         </ul>
-                <label for="choices">Make your choice: </label>
-                <select name="choices" id="choices">
-                    <!-- Will need to *ngFor the dropdown for when multiple exist -->
-                    <option value="monster" *ngFor="let choice of requirements.level1Choices[1]">{{choice}}</option>
-                </select>
+        <label for="choice2">Make your choice: </label>
+        <select name="choice2" id="choices" [(ngModel)]="selectedChoice2">
+            <!-- Will need to *ngFor the dropdown for when multiple exist -->
+            <option name="choice2" value="{{choice}}" *ngFor="let choice of requirements.level1Choices[1]">{{choice}}
+            </option>
+        </select>
+
     </mat-dialog-content>
     <br>
 
@@ -37,7 +49,12 @@
 
 
     <mat-dialog-actions>
-        <button mat-raised-button>Create Character</button>
+        <button mat-raised-button (click)="createCharacterSheet()">Create Character</button>
     </mat-dialog-actions>
     <br>
+</div>
+    <!-- FIGHTER -->
+    <!-- put ngIf class==fighter in this div, and base it off ranger's div -->
+<div>
+
 </div>

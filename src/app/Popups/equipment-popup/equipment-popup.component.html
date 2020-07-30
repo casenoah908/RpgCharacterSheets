@@ -1,5 +1,6 @@
 <div>
     <h1>What do you have?</h1>
+    <!-- <h2>{{character.skillProf[0]}} + {{character.skillProf[1]}} + {{character.skillProf[2]}}</h2> -->
     <hr>
     <mat-dialog-content>
         <p>Make the following choices for weapons and other equipment you get to start with.</p> 
@@ -9,32 +10,32 @@
     <!-- ARMOR CHOICE -->
     <h4>Choose an Armor</h4>
     <div class="row">
-        <ul *ngFor="let armor of requirements.armors">
-            <label for="armor"><input type="radio" name="armor">      {{armor}}</label>
+        <ul *ngFor="let armor of requirements.armors" >
+            <label for="armor"><input type="radio" name="armor" value="{{armor}}" [(ngModel)]="selectedArmor">      {{armor}}</label>
         </ul>
     </div>
 
     <!-- WEAPON 1 CHOICE -->
     <h4>Choose a Weapon</h4>
     <div class="row">
-        <ul *ngFor="let weapon of requirements.weapons">
-            <label for="weapon"><input type="radio" name="weapon">      {{weapon}}</label>
+        <ul *ngFor="let weapon of requirements.weapons" >
+            <label for="weapon"><input type="radio" name="weapon" value="{{weapon}}" [(ngModel)]="selectedWeapon">      {{weapon}}</label>
         </ul>
     </div>
 
     <!-- WEAPON 2 CHOICE -->
     <h4>Choose another Weapon</h4>
     <div class="row">
-        <ul *ngFor="let secondWeapon of requirements.secondWeapons">
-            <label for="secondWeapon"><input type="radio" name="secondWeapon">      {{secondWeapon}}</label>
+        <ul *ngFor="let secondWeapon of requirements.secondWeapons" >
+            <label for="secondWeapon"><input type="radio" name="secondWeapon" value="{{secondWeapon}}" [(ngModel)]="selectedSecondWeapon">      {{secondWeapon}}</label>
         </ul>
     </div>
 
     <!-- PACK CHOICE -->
     <h4>Choose a Pack</h4>
     <div class="row">
-        <ul *ngFor="let pack of requirements.packs">
-            <label for="pack"><input type="radio" name="pack">      {{pack}}</label>
+        <ul *ngFor="let pack of requirements.packs" >
+            <label for="pack"><input type="radio" name="pack" value="{{pack}}" [(ngModel)]="selectedPack">      {{pack}}</label>
         </ul>
     </div>
 

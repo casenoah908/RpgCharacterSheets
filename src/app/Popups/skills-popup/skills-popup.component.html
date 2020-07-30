@@ -8,7 +8,7 @@
 
     <!-- list of checkboxes buttons -->
     <ul *ngFor="let skill of requirements.skills | slice:1">
-        <label for="skill"><input type="checkbox" (change)="checkLimit($event, checkbox)">      {{skill}}  </label>
+        <label for="skill"><input type="checkbox" value="{{skill}}" (change)="editSkillProfs($event, skill)">      {{skill}}  </label>
     </ul>
 
     <!-- example of how to grab data -->

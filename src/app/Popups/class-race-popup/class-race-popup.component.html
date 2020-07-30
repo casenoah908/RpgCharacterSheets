@@ -41,7 +41,8 @@
         <div class="col">
             <select name="races" id="races" [(ngModel)]="race">    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
-                <option value="elf">Elf</option>
+                <option value="Elf">Elf</option>
+                <option value="High Elf">High Elf</option>
             </select>
         </div>
     </div>
@@ -87,7 +88,7 @@
 
     <hr>
     <mat-dialog-actions>
-        <button mat-raised-button (click)="submitClassRace(role)">Submit</button>
+        <button mat-raised-button (click)="submitClassRace()">Submit</button>
     </mat-dialog-actions>
     <br>
 </div>
