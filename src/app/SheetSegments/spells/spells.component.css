@@ -35,3 +35,8 @@ a{
     border-bottom-style: solid;
     border-width: 4px;
 }
+h3{
+    text-align: left;
+    margin-right: 8% ;
+    margin-top: 3%;
+}

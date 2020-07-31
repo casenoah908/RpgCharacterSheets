@@ -5,117 +5,104 @@
 
 <!-- Money -->
 <div class="row pt-4 pb-4">
-    <div class="col-auto">
+
         <h4 class="d-inline">PP</h4>
         <div class="Tab d-inline">
-            XX
+            {{characterInfo.getPlatinum()}}
         </div>
-    </div>
-    <div class="col-auto">
+
         <h4 class="d-inline">GP</h4>
         <div class="Tab d-inline">
-            XX
+            {{characterInfo.getGold()}}
         </div>
-    </div>
-    <div class="col-auto">
+
         <h4 class="d-inline">EP</h4>
         <div class="Tab d-inline">
-            XX
+            {{characterInfo.getElectrum()}}
         </div>
-    </div>
-    <div class="col-auto">
+
         <h4 class="d-inline">SP</h4>
         <div class="Tab d-inline">
-            XX
+            {{characterInfo.getSilver()}}
         </div>
-    </div>
-    <div class="col-auto">
+
         <h4 class="d-inline">CP</h4>
         <div class="Tab d-inline">
-            XX
+            {{characterInfo.getCopper()}}
         </div>
-    </div>
+
 </div>
 
 
 <!-- Items -->
-<div class="row pt-3">
+<div class="row pt-3 list">
     <div class="col">
         <h5>Armor</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let armor of characterInfo.getArmors()">
+            <li>{{armor}}</li>
         </ul>
+        <p>+add</p>
     </div>
     <div class="col">
         <h5>Weapons</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let weapon of characterInfo.getWeapons()">
+            <li>{{weapon}}</li>
         </ul>
+        <p>+add</p>
     </div>
     <div class="col">
         <h5>Packs</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let pack of characterInfo.getPacks()">
+            <li>{{pack}}</li>
         </ul>
+        <p>+add</p>
     </div>
-    
 </div>
 
-<div class="row p-2">
+<div class="row list">
     <div class="col">
         <h5>Languages</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let language of characterInfo.getLanguages()">
+            <li>{{language}}</li>
         </ul>
+        <p>+add</p>
     </div>
     <div class="col">
         <h5>Other</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let other of characterInfo.getOthers()">
             <li>Example</li>
         </ul>
+        <p>+add</p>
     </div>
     <div class="col">
-        <!-- for alignment -->
+        <!-- for alignment (template wise, not the character property) -->
     </div>
 </div>
 
 
 
 <!-- Proficiencies -->
-<div class="row p-2">
+<div class="row list">
     <div class="col">
         <h5>Armor Proficiencies</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let armorProf of characterInfo.getArmorProfs()">
+            <li>{{armorProf}}</li>
         </ul>
+        <p>+add</p> 
     </div>
     <div class="col">
         <h5>Weapon Proficiencies</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let weaponProf of characterInfo.getWeaponProfs()">
+            <li>{{weaponProf}}</li>
         </ul>
+        <p>+add</p>
     </div>
     <div class="col">
         <h5>Tool Proficiencies</h5>
-        <ul>
-            <li>Example</li>
-            <li>Example</li>
-            <li>Example</li>
+        <ul *ngFor="let toolProf of characterInfo.getToolProfs()">
+            <li>{{toolProf}}</li>
         </ul>
+        <p>+add</p>
     </div>
 </div>
 
@@ -125,21 +112,21 @@
 <div class="row p-2">
     <div class="col">
         <h5>Personality Traits</h5>
-        <textarea></textarea>
+        <textarea>{{characterInfo.getPersonalityTraits()}}</textarea>
     </div>
     <div class="col">
         <h5>Ideals</h5>
-        <textarea></textarea>
+        <textarea>{{characterInfo.getIdeals()}}</textarea>
     </div>
 </div>
 
 <div class="row p-2 separator">
     <div class="col">
         <h5>Bonds</h5>
-        <textarea></textarea>
+        <textarea>{{characterInfo.getBonds()}}</textarea>
     </div>
     <div class="col">
         <h5>Flaws</h5>
-        <textarea></textarea>
+        <textarea>{{characterInfo.getFlaws()}}</textarea>
     </div>
 </div>

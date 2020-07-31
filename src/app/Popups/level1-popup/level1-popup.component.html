@@ -15,8 +15,8 @@
 
 
         <!-- First Ability -->
-        <h4>{{requirements.level1Desc[0]}}</h4>
-        <p>{{requirements.level1Desc[1]}}</p>
+        <h4>{{requirements.level1Header[0]}}</h4>
+        <p>{{requirements.level1Desc[0]}}</p>
         <label for="choice1">Make your choice: </label>
         <select name="choice1" id="choices" [(ngModel)]="selectedChoice1">
             <option name="choice1" value="{{choice}}" *ngFor="let choice of requirements.level1Choices[0]">{{choice}}
@@ -29,8 +29,8 @@
 
 
         <!-- Second Ability -->
-        <h4>{{requirements.level1Desc[2]}}</h4>
-        <p>{{requirements.level1Desc[3]}}</p>
+        <h4>{{requirements.level1Header[1]}}</h4>
+        <p>{{requirements.level1Desc[1]}}</p>
         <ul *ngFor="let addition of requirements.level1Desc | slice:4">
             <li>{{addition}}</li>
         </ul>

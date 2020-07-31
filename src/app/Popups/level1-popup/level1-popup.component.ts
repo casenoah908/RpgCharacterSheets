@@ -6,10 +6,11 @@ import { Weapon } from '../../CharacterGen/weapon';
 
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
-import { from } from 'rxjs';
 import { Race } from 'src/app/CharacterGen/race';
 
-import { Router, NavigationExtras } from '@angular/router';
+import { Router} from '@angular/router';
+
+import{ GenerationService } from '../../CharacterGen/generation.service';
 
 @Component({
   selector: 'app-level1-popup',
@@ -18,7 +19,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class Level1PopupComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<Level1PopupComponent>, private router : Router) { }
+  constructor(private generationService : GenerationService, @Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<Level1PopupComponent>, private router : Router) { }
 
   requirements: Requirements;
   character: Character;
@@ -53,10 +54,12 @@ export class Level1PopupComponent implements OnInit {
 
     this.thisDialogRef.close();
 
-    //First, post character and race Info to a database (may need to add id to character, as well as raceInfo object)
-    //DO THAT HERE
+    this.generationService.finalizeCharacter(this.character,this.raceInfo);
+    //send character and raceInfo to generation service
+    this.generationService.holdInfo(this.character,this.raceInfo);
     //Then, navigate to sheet, where on the sheet the character is grabbed by an id that is passed through router
     this.router.navigateByUrl('sheet');
+    //Instead, we may want to post character and race Info to a database (may need to add id to character, as well as raceInfo object) in the future.
   }
 
   

@@ -21,6 +21,10 @@ export class GenerationService {
     ClassData = ClassCharData;
     RaceData = RaceList;
 
+    //character and race objects
+    characterInfo: Character;
+    raceInfo: Race;
+
 
     // Pass "menu" of requirements
     // searches through ClassCharData for a Character object that matches 
@@ -58,7 +62,7 @@ export class GenerationService {
     }
 
     //takes a character object from final popup and sets any remaining values left to be assigned
-    finalizeCharacter(passedCharacter:Character){
+    finalizeCharacter(passedCharacter:Character, passedRace: Race){
         //character object
         var character = passedCharacter;
         //statMods
@@ -80,6 +84,8 @@ export class GenerationService {
         character.setCurrentHp(character.getMaxHp()); //start current hp at max
         //intiative
         character.setInitiative(dexterityMod);
+        //speed
+        character.setSpeed(passedRace.speed);
         //passive wisdom (checks for perception proficiency)
         var perceptionProf = false; 
         for(let i=0; i<character.getSkillProfs().length; i++){
@@ -116,6 +122,19 @@ export class GenerationService {
             //character has none
         }
         
+    }
+
+    //hold character and race info for passing between routers
+    holdInfo(characterInfo:Character, raceInfo: Race){
+        this.characterInfo = characterInfo;
+        this.raceInfo = raceInfo;
+    }
+    //get character and race info (for passing between routers)
+    getPassedCharacterInfo(){
+        return this.characterInfo;
+    }
+    getPassedRaceInfo(){
+        return this.raceInfo;
     }
 
 }

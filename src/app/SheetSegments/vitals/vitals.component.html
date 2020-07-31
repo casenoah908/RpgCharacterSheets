@@ -1,25 +1,40 @@
 <div class="row" style="border-width: 2px; border-bottom-style: solid">
     <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        ARMOR CLASS
+        ARMOR CLASS:
+        {{characterInfo.getArmorClass()}}
     </div>
     <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        <i class="far fa-heart"></i>
+        MAX HP:
+        {{characterInfo.getMaxHp()}}
+        <br>
+        CURRENT HP:
+        {{characterInfo.getCurrentHp()}}
+        <br>
+        TEMP HP:
+        {{characterInfo.getTempHp()}}
     </div>
     <div class="col">
-        INITIATIVE AND SPEED
+        INITIATIVE:
+        +{{characterInfo.getInitiative()}}
+        SPEED:
+        {{characterInfo.getSpeed()}} ft.
     </div>
 </div>
 <div class="row separator">
     <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        PASSIVE WISDOM
+        PASSIVE WISDOM:
+        {{characterInfo.getPassiveWisdom()}}
     </div>
     <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        HIT DICE
+        HIT DICE:
+        {{characterInfo.getHitDice()}}
     </div>
     <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        DEATH SAVES
+        DEATH SAVES:
+        <!-- Make DeathSaves Box -->
     </div>
     <div class="col">
-        INSPIRATION
+        INSPIRATION:
+        <!-- Make Checkbox -->
     </div>
 </div>

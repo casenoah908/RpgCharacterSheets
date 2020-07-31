@@ -26,3 +26,8 @@ textarea{
     background-color: #66909e;
     justify-content: center;
 }
+p{
+    margin-left: 5%;
+    text-decoration: underline;
+    font-size: larger;
+}

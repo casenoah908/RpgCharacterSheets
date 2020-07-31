@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Character } from '../CharacterGen/character';
 import { Race } from '../CharacterGen/race';
 
-//router
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { GenerationService } from '../CharacterGen/generation.service';
 
 @Component({
   selector: 'app-character-sheet',
@@ -16,10 +15,12 @@ export class CharacterSheetComponent implements OnInit {
   raceInfo: Race;
 
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private generationService : GenerationService) { }
 
   ngOnInit(): void {
-
+    //obtain character and race info from generation service, passed between router switches
+    this.characterInfo = this.generationService.getPassedCharacterInfo();
+    this.raceInfo = this.generationService.getPassedRaceInfo();
   }
 
 }

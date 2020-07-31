@@ -15,17 +15,18 @@
 
 <!-- Weapons List -->
 <!-- Will need to *ngFor this row for the amount of added items -->
-<div class="row p-0 bottomLine">
-    <div class="col cell" style="padding-left: 20px;">
-        <span>Weapon Name</span> 
+    <div class="row p-0 bottomLine" *ngFor="let weapon of characterInfo.getWeapons()">
+        <div class="col cell" style="padding-left: 20px;" >
+            <span>{{weapon}}</span> 
+        </div>
+        <div class="midCell">
+            <span style="float: right;">+ X</span>
+        </div>
+        <div class="col-3 cell">
+            <span>DX + X | Type</span>
+        </div>
     </div>
-    <div class="midCell">
-        <span style="float: right;">+ X</span>
-    </div>
-    <div class="col-3 cell">
-        <span>DX + X | Type</span>
-    </div>
-</div>
+
 
 
 <!-- Button to Add Weapon -->

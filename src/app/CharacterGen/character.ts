@@ -525,7 +525,7 @@ export class Character {
         this.levelAbilities = [];
     }
     addLevelAbility(value: string) {
-        this.weapons.push(value);
+        this.levelAbilities.push(value);
     }
 
 

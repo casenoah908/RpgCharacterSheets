@@ -177,6 +177,14 @@ export class StatsPopupComponent implements OnInit {
 
   openSkillsPopup() {
 
+    //add racial bonuses
+    this.strength = Number(this.strength) + Number(this.strBonus);
+    this.dexterity = Number(this.dexterity) + Number(this.dexBonus);
+    this.constitution = Number(this.constitution) + Number(this.conBonus);
+    this.intelligence = Number(this.intelligence) + Number(this.intBonus);
+    this.wisdom = Number(this.wisdom) + Number(this.wisBonus);
+    this.charisma = Number(this.charisma) + Number(this.charBonus);
+
     //assign statistics
     this.character.setStrength(this.strength);
     this.character.setDexterity(this.dexterity);
