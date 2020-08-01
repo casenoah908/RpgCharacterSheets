@@ -4,7 +4,13 @@ Hi! Use the following link to view this webpage!
   https://casenoah908.github.io/RpgCharacterSheets/
 
 
-#Technical Mumbo Jumbo
+
+
+
+
+
+
+# Technical Mumbo Jumbo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.
 
