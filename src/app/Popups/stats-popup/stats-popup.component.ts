@@ -27,12 +27,12 @@ export class StatsPopupComponent implements OnInit {
   requirements: Requirements;
   raceInfo: Race;
   //statistics
-  strength: number;
-  dexterity: number;
-  constitution: number;
-  intelligence: number;
-  wisdom: number;
-  charisma: number;
+  strength: number = 0;
+  dexterity: number = 0;
+  constitution: number = 0;
+  intelligence: number = 0;
+  wisdom: number = 0;
+  charisma: number = 0;
   //rolled statistics (for keeping rolls while updating text boxes)
   rolledStrength: number;
   rolledDexterity: number;
@@ -57,6 +57,9 @@ export class StatsPopupComponent implements OnInit {
   wisBonus: number;
   charBonus: number;
 
+  //user input flag
+  formIncomplete: boolean;
+
 
 
   constructor(public thisDialogRef: MatDialogRef<StatsPopupComponent>, @Inject(MAT_DIALOG_DATA) public data, public dialog: MatDialog) { }
@@ -72,6 +75,8 @@ export class StatsPopupComponent implements OnInit {
     this.intBonus = this.raceInfo.abilityScoreIncrease[3];
     this.wisBonus = this.raceInfo.abilityScoreIncrease[4];
     this.charBonus = this.raceInfo.abilityScoreIncrease[5];
+
+    this.formIncomplete = false;
   }
 
   //mod updates
@@ -177,34 +182,43 @@ export class StatsPopupComponent implements OnInit {
 
   openSkillsPopup() {
 
-    //add racial bonuses
-    this.strength = Number(this.strength) + Number(this.strBonus);
-    this.dexterity = Number(this.dexterity) + Number(this.dexBonus);
-    this.constitution = Number(this.constitution) + Number(this.conBonus);
-    this.intelligence = Number(this.intelligence) + Number(this.intBonus);
-    this.wisdom = Number(this.wisdom) + Number(this.wisBonus);
-    this.charisma = Number(this.charisma) + Number(this.charBonus);
+    //check user input is complete (if all 6 stats are between 3 and 18 (before racial bonuses))
+    if (this.strength < 3 || this.strength > 18 || this.dexterity < 3 || this.dexterity > 18 || this.constitution < 3 || this.constitution > 18 || this.intelligence < 3 || this.intelligence > 18 || this.wisdom < 3 || this.wisdom > 18 || this.charisma < 3 || this.charisma > 18) {
+      this.formIncomplete = true;
+    }
+    else {
 
-    //assign statistics
-    this.character.setStrength(this.strength);
-    this.character.setDexterity(this.dexterity);
-    this.character.setConstitution(this.constitution);
-    this.character.setIntelligence(this.intelligence);
-    this.character.setWisdom(this.wisdom);
-    this.character.setCharisma(this.charisma);
 
-    //open next popup
-    let dialogRef = this.dialog.open(SkillsPopupComponent, {
-      // size of popup
-      width: '600px',
-      // data that gets passed to popup (requirements object)
-      data: {
-        dialogRequirements: this.requirements,
-        dialogCharacter: this.character,
-        dialogRaceInfo: this.raceInfo
-      }
-    });
-    this.thisDialogRef.close();
+
+      //add racial bonuses
+      this.strength = Number(this.strength) + Number(this.strBonus);
+      this.dexterity = Number(this.dexterity) + Number(this.dexBonus);
+      this.constitution = Number(this.constitution) + Number(this.conBonus);
+      this.intelligence = Number(this.intelligence) + Number(this.intBonus);
+      this.wisdom = Number(this.wisdom) + Number(this.wisBonus);
+      this.charisma = Number(this.charisma) + Number(this.charBonus);
+
+      //assign statistics
+      this.character.setStrength(this.strength);
+      this.character.setDexterity(this.dexterity);
+      this.character.setConstitution(this.constitution);
+      this.character.setIntelligence(this.intelligence);
+      this.character.setWisdom(this.wisdom);
+      this.character.setCharisma(this.charisma);
+
+      //open next popup
+      let dialogRef = this.dialog.open(SkillsPopupComponent, {
+        // size of popup
+        width: '600px',
+        // data that gets passed to popup (requirements object)
+        data: {
+          dialogRequirements: this.requirements,
+          dialogCharacter: this.character,
+          dialogRaceInfo: this.raceInfo
+        }
+      });
+      this.thisDialogRef.close();
+    }
   }
 
 }

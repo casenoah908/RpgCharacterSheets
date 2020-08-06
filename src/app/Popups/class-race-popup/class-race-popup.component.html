@@ -26,7 +26,18 @@
         <div class="col">
             <select [(ngModel)]="role" name="classes" id="classes" >    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                <option value="Barbarian">Barbarian</option>
+                <option value="Bard">Bard</option>
+                <option value="Cleric">Cleric</option>
+                <option value="Druid">Druid</option>
+                <option value="Fighter">Fighter</option>
+                <option value="Monk">Monk</option>
+                <option value="Paladin">Paladin</option>
                 <option value="Ranger">Ranger</option>
+                <option value="Rogue">Rogue</option>
+                <option value="Sorceror">Sorceror</option>
+                <option value="Warlock">Warlock</option>
+                <option value="Wizard">Wizard</option>
             </select>
         </div>
     </div>
@@ -39,10 +50,33 @@
             <label for="races">Character Race: </label>
         </div>
         <div class="col">
-            <select name="races" id="races" [(ngModel)]="race">    
-                <!-- Will need to *ngFor the dropdown for when multiple exist -->
+            <select name="races" id="races" [(ngModel)]="race">
+                <!-- Dragonborn -->
+                <option value="Dragonborn">Dragonborn</option>
+                <!-- Dwarf -->
+                <option value="Dwarf">Dwarf</option>
+                <option value="Hill Dwarf">Hill Dwarf</option>
+                <option value="Mountain Dwarf">Mountain Dwarf</option>
+                <!-- Elf -->
                 <option value="Elf">Elf</option>
                 <option value="High Elf">High Elf</option>
+                <option value="Wood Elf">Wood Elf</option>
+                <!-- Gnome -->
+                <option value="Gnome">Gnome</option>
+                <option value="Deep Gnome">Deep Gnome</option>
+                <option value="Rock Gnome">Rock Gnome</option>
+                <!-- Half-Elf -->
+                <option value="Half Elf">Half Elf</option>
+                <!-- Halfling -->
+                <option value="Halfling">Halfling</option>
+                <option value="Lightfoot Halfling">Lightfoot Halfling</option>
+                <option value="Stout Halfling">Stout Halfling</option>
+                <!-- Half-Orc -->
+                <option value="Half Orc">Half Orc</option>
+                <!-- Human -->
+                <option value="Human">Human</option>
+                <!-- Tiefling -->
+                <option value="Tiefling">Tiefling</option>
             </select>
         </div>
     </div>
@@ -57,8 +91,54 @@
         <div class="col">
             <select name="background" id="background" [(ngModel)]="background">    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
-                <option value="custom">Custom</option>
-                <option value="soldier">Soldier</option>
+                <option value="Custom">Custom</option>
+                <option value="Acolyte">Acolyte</option>
+                <option value="Anthropologist">Anthropologist</option>
+                <option value="Archaeologist">Archaeologist</option>
+                <option value="Celebrity Adventurer's Scion">Celebrity Adventurer's Scion</option>
+                <option value="Charlatan">Charlatan</option>
+                <option value="City Watch">City Watch</option>
+                <option value="Investigator">Investigator</option>
+                <option value="Clan Crafter">Clan Crafter</option>
+                <option value="Cloistered Scholar">Cloistered Scholar</option>
+                
+                <option value="Courtier">Courtier</option>
+                <option value="Criminal">Criminal</option>
+                <option value="Spy">Spy</option>
+                <option value="Entertainer">Entertainer</option>
+                <option value="Faceless">Faceless</option>
+                <option value="Faction Agent">Faction Agent</option>
+                <option value="Failed Merchant">Failed Merchant</option>
+                <option value="Far Traveler">Far Traveler</option>
+                <option value="Fisher">Fisher</option>
+                <option value="Folk Hero">Folk Hero</option>
+
+                <option value="Gambler">Gambler</option>
+                <option value="Gladiator">Gladiator</option>
+                <option value="Guild Artisan">Guild Artisan</option>
+                <option value="Haunted One">Haunted One</option>
+                <option value="Hermit">Hermit</option>
+                <option value="Inheritor">Inheritor</option>
+                <option value="Knight">Knight</option>
+                <option value="Knight of the Order">Knight of the Order</option>
+                <option value="Marine">Marine</option>
+                <option value="Mercenary Veteran">Mercenary Veteran</option>
+
+                <option value="Noble">Noble</option>
+                <option value="Outlander">Outlander</option>
+                <option value="Pirate">Pirate</option>
+                <option value="Plaintiff">Plaintiff</option>
+                <option value="Rival Intern">Rival Intern</option>
+                <option value="Sage">Sage</option>
+                <option value="Sailor">Sailor</option>
+                <option value="Shipwright">Shipwright</option>
+                <option value="Smuggler">Smuggler</option>
+                <option value="Soldier">Soldier</option>
+                
+                <option value="Urban Bounty Hunter">Urban Bounty Hunter</option>
+                <option value="Urchin">Urchin</option>
+                <option value="Uthgardt Tribe Member">Uthgardt Tribe Member</option>
+                <option value="Waterdhavian Noble">Waterdhavian Noble</option>
             </select>
         </div>
     </div>
@@ -73,15 +153,15 @@
         <div class="col">
             <select name="alignment" id="alignment" [(ngModel)]="alignment">    
                 <!-- Will need to *ngFor the dropdown for when multiple exist -->
-                <option value="lawfulGood">Lawful Good</option>
-                <option value="neutralGood">Neutral Good</option>
-                <option value="chaoticGood">Chaotic Good</option>
-                <option value="lawfulNeutral">Lawful Neutral</option>
-                <option value="neutral">Neutral</option>
-                <option value="chaoticNeutral">Chaotic Neutral</option>
-                <option value="lawfulEvil">Lawful Evil</option>
-                <option value="neutralEvil">Neutral Evil</option>
-                <option value="chaoticEvil">Chaotic Evil</option>
+                <option value="Lawful Good">Lawful Good</option>
+                <option value="Neutral Good">Neutral Good</option>
+                <option value="Chaotic Good">Chaotic Good</option>
+                <option value="Lawful Neutral">Lawful Neutral</option>
+                <option value="Neutral">Neutral</option>
+                <option value="Chaotic Neutral">Chaotic Neutral</option>
+                <option value="Lawful Evil">Lawful Evil</option>
+                <option value="Neutral Evil">Neutral Evil</option>
+                <option value="Chaotic Evil">Chaotic Evil</option>
             </select>
         </div>
     </div>
@@ -91,4 +171,8 @@
         <button mat-raised-button (click)="submitClassRace()">Submit</button>
     </mat-dialog-actions>
     <br>
+    <!-- If user doesn't make a selection for any input -->
+    <div *ngIf = 'formIncomplete' class="warning">
+        <p>Please make a selection for every field.</p>
+    </div>
 </div>

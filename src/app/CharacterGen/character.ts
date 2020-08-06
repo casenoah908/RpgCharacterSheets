@@ -2,6 +2,8 @@ import { Weapon } from "./weapon";
 import { summaryForJitFileName } from '@angular/compiler/src/aot/util';
 import { stringify } from '@angular/compiler/src/util';
 
+import { ClassTrait } from './classTrait';
+
 export class Character {
 
     // constructor at bottom
@@ -32,6 +34,11 @@ export class Character {
     }
     setRole(value: string) {
         this.role = value;
+    }
+
+    private classImageUrl: string;
+    getClassImageUrl(){
+        return this.classImageUrl;
     }
 
     private level: number; //preset
@@ -380,13 +387,19 @@ export class Character {
     setLanguages(value: Array<string>) {
         this.languages = value;
     }
+    addLanguages(value: string){
+        this.languages.push(value);
+    }
 
     private others: Array<string>;
     getOthers() {
         return this.others;
     }
-    setOthers(value: Array<string>) {
-        this.others = value;
+    clearOthers(){
+        this.others = [];
+    }
+    addOthers(value: string) {
+        this.others.push(value);
     }
 
     private armorProfs: Array<string>;
@@ -517,28 +530,40 @@ export class Character {
     // --------------- //
     // CLASS ABILITIES //
     // --------------- //
-    private levelAbilities: Array<string>;
-    getLevelAbilities() {
-        return this.levelAbilities;
+    // private levelAbilities: Array<string>;
+    // getLevelAbilities() {
+    //     return this.levelAbilities;
+    // }
+    // clearLevelAbilities() {
+    //     this.levelAbilities = [];
+    // }
+    // addLevelAbility(value: string) {
+    //     this.levelAbilities.push(value);
+    // }
+
+    private classTraits: Array<ClassTrait>;
+    getClassTraits() {
+        return this.classTraits;
     }
-    clearLevelAbilities() {
-        this.levelAbilities = [];
+    clearClassTraits(){
+        this.classTraits = [];
     }
-    addLevelAbility(value: string) {
-        this.levelAbilities.push(value);
+    addClassTraits(value: ClassTrait){
+        this.classTraits.push(value);
     }
 
 
 
 
 
-    constructor(role: string, hit_dice: number, savingThrowProfs: Array<string>, weaponProfs: Array<string>, armorProfs: Array<string>, toolProfs: Array<string>, spellcastingAbility: string, spellTable: Array<Array<number>>) {
+    constructor(role: string, classImageUrl: string, hit_dice: number, armors: Array<string>, weapons: Array<string>, packs: Array<string>, others: Array<string>, savingThrowProfs: Array<string>, weaponProfs: Array<string>, armorProfs: Array<string>, toolProfs: Array<string>, spellcastingAbility: string, spellTable: Array<Array<number>>) {
         //comments by each property label what they are determined by. If none, it's a default value for everyone
 
         // Header Component (COMPLETE)
         this.name = ""; //user input
         this.race = ""; //user input
         this.role = role; //user input
+        this.classImageUrl = classImageUrl;
         this.level = 1;
         this.xp = 0;
         this.background = ""; //user input
@@ -575,10 +600,10 @@ export class Character {
         this.electrum = 0;
         this.silver = 0;
         this.copper = 0;
-        this.armors = []; // user input
-        this.packs = []; //user input
+        this.armors = armors; // user input
+        this.packs = packs; //user input
         this.languages = []; //race
-        this.others = [];
+        this.others = others;
         this.armorProfs = armorProfs; //class
         this.weaponProfs = weaponProfs; //class
         this.toolProfs = toolProfs; //class
@@ -599,7 +624,7 @@ export class Character {
         this.spells = []; //user input post creation
 
         // Class abilities component
-        this.levelAbilities = []; //user input
+        this.classTraits = []; //user input
 
     }
 

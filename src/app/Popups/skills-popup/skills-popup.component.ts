@@ -24,6 +24,8 @@ export class SkillsPopupComponent implements OnInit {
   requirements: Requirements;
   raceInfo: Race;
   limit: number;
+  //user input flag
+  formIncomplete: boolean;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<SkillsPopupComponent>, public dialog: MatDialog) { }
 
@@ -31,26 +33,27 @@ export class SkillsPopupComponent implements OnInit {
     this.requirements = this.data.dialogRequirements;
     this.character = this.data.dialogCharacter;
     this.raceInfo = this.data.dialogRaceInfo;
-    this.limit = Number(this.requirements.skills[0]); //This is the problem
+    this.limit = Number(this.requirements.skills[0]); 
+    this.formIncomplete = false;
   }
 
   checkCount: number = 0;
-  editSkillProfs(event, skill: string){
+  editSkillProfs(event, skill: string) {
     //if checked
-    if(event.target.checked == true){
+    if (event.target.checked == true) {
       //check limit
-      if(this.checkCount < this.limit){
+      if (this.checkCount < this.limit) {
         //add to proficiencies
         this.character.addSkillProfs(skill);
         //raise limit
         this.checkCount++;
-      //if limit woulld be exceeded
-      }else{
+        //if limit woulld be exceeded
+      } else {
         //refuse selection
         event.target.checked = false;
       }
-    //if unchecked
-    }else{
+      //if unchecked
+    } else {
       //remove from proficiencies
       this.character.removeSkillProfs(skill);
       //decrease limit
@@ -58,23 +61,26 @@ export class SkillsPopupComponent implements OnInit {
     }
   }
 
-  openEquipmentPopup(){
+  openEquipmentPopup() {
 
-    //asign character values
-
-
-
-    let dialogRef = this.dialog.open(EquipmentPopupComponent, {
-      // size of popup
-      width: '600px',
-      // data that gets passed to popup (requirements object)
-      data: {
-        dialogRequirements: this.requirements,
-        dialogCharacter: this.character,
-        dialogRaceInfo: this.raceInfo
-      }
-    });
-    this.thisDialogRef.close();
+    //check user input is complete
+    if (this.checkCount != this.limit) {
+      this.formIncomplete = true;
+    }
+    //if the user has selected maximum amount of skills...
+    else {
+      let dialogRef = this.dialog.open(EquipmentPopupComponent, {
+        // size of popup
+        width: '600px',
+        // data that gets passed to popup (requirements object)
+        data: {
+          dialogRequirements: this.requirements,
+          dialogCharacter: this.character,
+          dialogRaceInfo: this.raceInfo
+        }
+      });
+      this.thisDialogRef.close();
+    }
   }
 
 }

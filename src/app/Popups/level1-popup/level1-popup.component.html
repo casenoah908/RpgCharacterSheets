@@ -1,60 +1,68 @@
 <!-- We may need to open different divs based on class, 
     so that different classes have different popups with different logic -->
 
-    <!-- RANGER -->
-    <!-- put ngIf class==ranger in this div -->
+<!-- RANGER -->
+<!-- put ngIf class==ranger in this div -->
 <div>
     <h1>What makes a {{requirements.role}} a {{requirements.role}}?</h1>
-    <!-- Equipment popup Testing -->
-    <!-- <h2>{{someArmors[0]}} + {{someWeapons[0]}} + {{someWeapons[1]}} + {{somePacks[0]}} + {{someArmors[1]}} + {{someWeapons[2]}} + {{someWeapons[3]}} + {{somePacks[1]}}</h2> -->
     <hr>
     <mat-dialog-content>
-        <p class="tldr">You get a couple of abilities that come with the class you chose</p>
+        <p>You get a couple of abilities that come with the class you chose:</p>
         <hr>
         <br>
 
-
         <!-- First Ability -->
-        <h4>{{requirements.level1Header[0]}}</h4>
-        <p>{{requirements.level1Desc[0]}}</p>
-        <label for="choice1">Make your choice: </label>
-        <select name="choice1" id="choices" [(ngModel)]="selectedChoice1">
-            <option name="choice1" value="{{choice}}" *ngFor="let choice of requirements.level1Choices[0]">{{choice}}
-            </option>
-        </select>
-        <!-- name="armor" value="{{armor}}" [(ngModel)]="selectedArmor" -->
+        <div *ngIf="requirements.level1Traits[0] != null">
+            <h4>{{requirements.level1Traits[0].header}}</h4>
+            <p class="paragraph">{{requirements.level1Traits[0].description}}</p>
+            <div *ngIf="requirements.level1Traits[0].choices.length != 0">
+                <label for="choice1">Make your choice: </label>
+                <select name="choice1" id="choices" [(ngModel)]="selectedChoice1">
+                    <option name="choice1" value="{{choice}}"
+                        *ngFor="let choice of requirements.level1Traits[0].choices">
+                        {{choice}}
+                    </option>
+                </select>
+            </div>
+        </div>
 
 
-        <hr>
-
+        <hr *ngIf="requirements.level1Traits[1] != null">
 
         <!-- Second Ability -->
-        <h4>{{requirements.level1Header[1]}}</h4>
-        <p>{{requirements.level1Desc[1]}}</p>
-        <ul *ngFor="let addition of requirements.level1Desc | slice:4">
-            <li>{{addition}}</li>
-        </ul>
-        <label for="choice2">Make your choice: </label>
-        <select name="choice2" id="choices" [(ngModel)]="selectedChoice2">
-            <!-- Will need to *ngFor the dropdown for when multiple exist -->
-            <option name="choice2" value="{{choice}}" *ngFor="let choice of requirements.level1Choices[1]">{{choice}}
-            </option>
-        </select>
+        <div *ngIf="requirements.level1Traits[1] != null">
+            <h4>{{requirements.level1Traits[1].header}}</h4>
+            <p class="paragraph">{{requirements.level1Traits[1].description}}</p>
+            <div *ngIf="requirements.level1Traits[1].choices.length != 0">
+                <label for="choice2">Make your choice: </label>
+                <select name="choice2" id="choices" [(ngModel)]="selectedChoice2">
+                    <!-- Will need to *ngFor the dropdown for when multiple exist -->
+                    <option name="choice2" value="{{choice}}"
+                        *ngFor="let choice of requirements.level1Traits[1].choices">
+                        {{choice}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <br *ngIf="requirements.level1Traits[1] != null">
 
     </mat-dialog-content>
-    <br>
-
+    
     <hr>
-
-
 
     <mat-dialog-actions>
         <button mat-raised-button (click)="createCharacterSheet()">Create Character</button>
     </mat-dialog-actions>
     <br>
+    <div *ngIf="formIncomplete" class="warning">
+        <p>Please make a selection for each class ability.</p>
+    </div>
+
+    <!-- I don't know about this here thing below... sounds kinda crazy... -->
 </div>
-    <!-- FIGHTER -->
-    <!-- put ngIf class==fighter in this div, and base it off ranger's div -->
+<!-- FIGHTER -->
+<!-- put ngIf class==fighter in this div, and base it off ranger's div -->
 <div>
 
 </div>

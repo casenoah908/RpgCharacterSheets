@@ -1,4 +1,4 @@
-p{
+.paragraph{
     text-indent: 25px;
 }
 
@@ -10,14 +10,13 @@ label{
     font-weight: bold;
 }
 
-.tldr{
-    text-indent: 0px;
-}
-
 button{
     background-color: #90EE90;
 }
 
 select{
     padding-left: 5px;
+}
+.warning{
+    color: red;
 }

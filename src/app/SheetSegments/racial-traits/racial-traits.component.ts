@@ -14,7 +14,6 @@ export class RacialTraitsComponent implements OnInit {
 
   characterInfo: Character;
   raceInfo: Race;
-  test: string;
 
   constructor(private generationService : GenerationService) { }
 
@@ -22,7 +21,6 @@ export class RacialTraitsComponent implements OnInit {
     //obtain character and race info from generation service, passed between router switches
     this.characterInfo = this.generationService.getPassedCharacterInfo();
     this.raceInfo = this.generationService.getPassedRaceInfo();
-    this.test = this.raceInfo.traits[0].header;
   }
 
 }

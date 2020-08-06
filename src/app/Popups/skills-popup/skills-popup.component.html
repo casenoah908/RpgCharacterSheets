@@ -2,7 +2,7 @@
     <h1>What are you good at?</h1>
     <hr>
     <mat-dialog-content>
-        <p>Pick {{requirements.skills[0]}} skills that you want to be proficient in. </p> 
+        <p>Pick {{requirements.skills[0]}} skills that you want to be proficient in: </p> 
     <hr>
     <br>
 
@@ -22,4 +22,7 @@
         <button mat-raised-button (click)="openEquipmentPopup()">Choose Skills</button>
     </mat-dialog-actions>
     <br>
+    <div *ngIf="formIncomplete" class="warning">
+        <p>Please select {{limit}} skills.</p>
+    </div>
 </div>

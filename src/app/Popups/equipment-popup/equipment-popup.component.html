@@ -3,44 +3,70 @@
     <!-- <h2>{{character.skillProf[0]}} + {{character.skillProf[1]}} + {{character.skillProf[2]}}</h2> -->
     <hr>
     <mat-dialog-content>
-        <p>Make the following choices for weapons and other equipment you get to start with.</p> 
-    <hr>
-    <br>
+        <p>Make the following choices for weapons and other equipment you get to start with:</p>
+        <hr>
+        <br>
 
-    <!-- ARMOR CHOICE -->
-    <h4>Choose an Armor</h4>
-    <div class="row">
-        <ul *ngFor="let armor of requirements.armors" >
-            <label for="armor"><input type="radio" name="armor" value="{{armor}}" [(ngModel)]="selectedArmor">      {{armor}}</label>
-        </ul>
-    </div>
+        <!-- ARMOR CHOICE -->
+        <div *ngIf="requirements.armors.length != 0">
+            <h4>Choose an Armor</h4>
+            <div class="row">
+                <ul *ngFor="let armor of requirements.armors">
+                    <label for="armor"><input type="radio" name="armor" value="{{armor}}" [(ngModel)]="selectedArmor">
+                        {{armor}}</label>
+                </ul>
+            </div>
+        </div>
 
-    <!-- WEAPON 1 CHOICE -->
-    <h4>Choose a Weapon</h4>
-    <div class="row">
-        <ul *ngFor="let weapon of requirements.weapons" >
-            <label for="weapon"><input type="radio" name="weapon" value="{{weapon}}" [(ngModel)]="selectedWeapon">      {{weapon}}</label>
-        </ul>
-    </div>
 
-    <!-- WEAPON 2 CHOICE -->
-    <h4>Choose another Weapon</h4>
-    <div class="row">
-        <ul *ngFor="let secondWeapon of requirements.secondWeapons" >
-            <label for="secondWeapon"><input type="radio" name="secondWeapon" value="{{secondWeapon}}" [(ngModel)]="selectedSecondWeapon">      {{secondWeapon}}</label>
-        </ul>
-    </div>
+        <div *ngIf="requirements.weapons.length != 0">
+            <!-- WEAPON 1 CHOICE -->
+            <h4>Choose a Weapon</h4>
+            <div class="row">
+                <ul *ngFor="let weapon of requirements.weapons">
+                    <label for="weapon"><input type="radio" name="weapon" value="{{weapon}}"
+                            [(ngModel)]="selectedWeapon"> {{weapon}}</label>
+                </ul>
+            </div>
+        </div>
 
-    <!-- PACK CHOICE -->
-    <h4>Choose a Pack</h4>
-    <div class="row">
-        <ul *ngFor="let pack of requirements.packs" >
-            <label for="pack"><input type="radio" name="pack" value="{{pack}}" [(ngModel)]="selectedPack">      {{pack}}</label>
-        </ul>
-    </div>
 
-    <!-- example of how to grab data -->
-    <!-- <strong> {{data.role}}  </strong> -->
+        <div *ngIf="requirements.secondWeapons.length != 0">
+            <!-- WEAPON 2 CHOICE -->
+            <h4>Choose another Weapon</h4>
+            <div class="row">
+                <ul *ngFor="let secondWeapon of requirements.secondWeapons">
+                    <label for="secondWeapon"><input type="radio" name="secondWeapon" value="{{secondWeapon}}"
+                            [(ngModel)]="selectedSecondWeapon"> {{secondWeapon}}</label>
+                </ul>
+            </div>
+        </div>
+
+
+        <div *ngIf="requirements.packs.length != 0">
+            <!-- PACK CHOICE -->
+            <h4>Choose a Pack</h4>
+            <div class="row">
+                <ul *ngFor="let pack of requirements.packs">
+                    <label for="pack"><input type="radio" name="pack" value="{{pack}}" [(ngModel)]="selectedPack">
+                        {{pack}}</label>
+                </ul>
+            </div>
+        </div>
+
+
+        <div *ngIf="requirements.others.length != 0">
+            <!-- PACK CHOICE -->
+            <h4>Choose an Item</h4>
+            <div class="row">
+                <ul *ngFor="let other of requirements.others">
+                    <label for="other"><input type="radio" name="other" value="{{other}}" [(ngModel)]="selectedOther">
+                        {{other}}</label>
+                </ul>
+            </div>
+        </div>
+        <!-- example of how to grab data -->
+        <!-- <strong> {{data.role}}  </strong> -->
     </mat-dialog-content>
 
     <hr>
@@ -49,4 +75,7 @@
         <button mat-raised-button (click)="openLevel1Popup()">Choose Equipment</button>
     </mat-dialog-actions>
     <br>
+    <div *ngIf="formIncomplete" class="warning">
+        <p>Please make a selection for each field.</p>
+    </div>
 </div>

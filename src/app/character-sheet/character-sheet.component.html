@@ -9,7 +9,7 @@
         <!-- Might want the other categories seperate/before from spell lists -->
         <app-equipment></app-equipment>
         <app-racial-traits></app-racial-traits>
-        <app-spells></app-spells>
+        <app-spells *ngIf="characterInfo.getSpellTable() != null"></app-spells>
         <app-class-traits></app-class-traits>
       </div>
 </div>

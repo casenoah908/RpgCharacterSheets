@@ -3,6 +3,7 @@ import { Character } from './character'
 import { ClassCharData } from './ClassCharData';
 import { RaceList } from './raceList';
 import { Race } from './race';
+import { race } from 'rxjs';
 
 @Injectable({
     providedIn: "root",
@@ -65,6 +66,7 @@ export class GenerationService {
     finalizeCharacter(passedCharacter:Character, passedRace: Race){
         //character object
         var character = passedCharacter;
+        var race = passedRace;
         //statMods
         var strengthMod = (Math.floor((character.getStrength()-10) / 2) );
         var dexterityMod = (Math.floor((character.getDexterity()-10) / 2) );
@@ -97,6 +99,11 @@ export class GenerationService {
             character.setPassiveWisdom((10+wisdomMod)+character.getProficiencyBonus());
         }else{ //if not propficient in perception, don't add proficienty bonus
             character.setPassiveWisdom(10+wisdomMod);
+        }
+
+        //languages
+        for(let i=0; i<race.languages.length; i++){
+            character.addLanguages(race.languages[i]);
         }
         
         

@@ -31,3 +31,9 @@ p{
     text-decoration: underline;
     font-size: larger;
 }
+img{
+    /* border-style: solid;
+    border-width: 2px; */
+    max-width: 50%;
+    height: auto;
+}

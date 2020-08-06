@@ -1,23 +1,28 @@
-<div class="row bottomLine classHeader">
-    <h1>{{characterInfo.getRole()}} Abilities</h1>
-</div>
+
+    <div class="row classHeader">
+        <h1>{{characterInfo.getRole()}} Abilities</h1>
+    </div>
+    <div class="row classHeader bottomLine">
+        <img src="{{characterInfo.getClassImageUrl()}}" alt="Class Image">
+    </div>
+
 
 <!-- Level 1 -->
 <div class="row bottomLine">
     <div class="col">
         <h2>Level 1</h2>
-        <ul *ngFor="let trait of classTraits">
+        <ul *ngFor="let trait of characterInfo.getClassTraits()">
             <div class="row">
                 <li><strong>{{trait.header}}:</strong> {{trait.description}}</li>
             </div>
-            <p>Your Choice: {{trait.choice}}</p>
+            <p *ngIf="trait.choice != ''">Your Choice: {{trait.choice}}</p>
         </ul>
         <textarea>Write anything else you want here.</textarea>
     </div>
 </div>
 
 <!-- Level 2 -->
-<div class="row bottomLine">
+<div class="row bottomLine" *ngIf="characterInfo.getLevel()>1">
     <div class="col">
         <h2>Level 2</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -25,7 +30,7 @@
 </div>
 
 <!-- Level 3 -->
-<div class="row bottomLine">
+<div class="row bottomLine"  *ngIf="characterInfo.getLevel()>2">
     <div class="col">
         <h2>Level 3</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -33,7 +38,7 @@
 </div>
 
 <!-- Level 4 -->
-<div class="row bottomLine">
+<div class="row bottomLine"  *ngIf="characterInfo.getLevel()>3">
     <div class="col">
         <h2>Level 4</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -41,7 +46,7 @@
 </div>
 
 <!-- Level 5 -->
-<div class="row bottomLine">
+<div class="row bottomLine"  *ngIf="characterInfo.getLevel()>4">
     <div class="col">
         <h2>Level 5</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -49,7 +54,7 @@
 </div>
 
 <!-- Level 6 -->
-<div class="row bottomLine">
+<div class="row bottomLine"  *ngIf="characterInfo.getLevel()>5">
     <div class="col">
         <h2>Level 6</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -57,7 +62,7 @@
 </div>
 
 <!-- Level 7 -->
-<div class="row bottomLine">
+<div class="row bottomLine"  *ngIf="characterInfo.getLevel()>6">
     <div class="col">
         <h2>Level 7</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -65,7 +70,7 @@
 </div>
 
 <!-- Level 8 -->
-<div class="row bottomLine">
+<div class="row bottomLine"  *ngIf="characterInfo.getLevel()>7">
     <div class="col">
         <h2>Level 8</h2>
         <textarea>Write anything else you want here.</textarea>
@@ -73,9 +78,97 @@
 </div>
 
 <!-- Level 9 -->
-<div class="row separator">
+<div class="row separator"  *ngIf="characterInfo.getLevel()>8">
     <div class="col">
         <h2>Level 9</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 10 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>9">
+    <div class="col">
+        <h2>Level 10</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 11 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>10">
+    <div class="col">
+        <h2>Level 11</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 12 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>11">
+    <div class="col">
+        <h2>Level 12</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 13 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>12">
+    <div class="col">
+        <h2>Level 13</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 14 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>13">
+    <div class="col">
+        <h2>Level 14</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 15 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>14">
+    <div class="col">
+        <h2>Level 15</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 16 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>15">
+    <div class="col">
+        <h2>Level 16</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 17 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>16">
+    <div class="col">
+        <h2>Level 17</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 18 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>17">
+    <div class="col">
+        <h2>Level 18</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 19 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>18">
+    <div class="col">
+        <h2>Level 19</h2>
+        <textarea>Write anything else you want here.</textarea>
+    </div>
+</div>
+
+<!-- Level 20 -->
+<div class="row separator"  *ngIf="characterInfo.getLevel()>19">
+    <div class="col">
+        <h2>Level 20</h2>
         <textarea>Write anything else you want here.</textarea>
     </div>
 </div>

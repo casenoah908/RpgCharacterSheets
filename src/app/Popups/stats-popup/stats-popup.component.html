@@ -2,7 +2,7 @@
     <h1>What makes you unique?</h1>
     <hr>
     <mat-dialog-content>
-        <p>Roll and assign your character's statistic scores. </p> 
+        <p>Roll and assign your character's statistic scores: </p> 
     <hr>
 
     <div class="row rollResults">
@@ -57,7 +57,7 @@
     <div class="row bonuses">
         <h5>Racial Bonus:</h5><p *ngIf="strBonus!=0">Strength: +{{strBonus}}</p><p *ngIf="dexBonus!=0">  Dexterity: +{{dexBonus}}</p><p *ngIf="conBonus!=0">  Constitution: +{{conBonus}}</p><p *ngIf="intBonus!=0">  Intelligence: +{{intBonus}}</p><p *ngIf="wisBonus!=0">  Wisdom: +{{wisBonus}}</p><p *ngIf="charBonus!=0">  Charisma: +{{charBonus}}</p>
     </div>
-    <p style="font-size: small;">(Bonuses NOT applied to rolls)</p>
+    <p style="font-size: small;">(Bonuses NOT applied to rolls, and will be applied after submission)</p>
 
 
     </mat-dialog-content>
@@ -69,4 +69,8 @@
         <button mat-raised-button (click)="openSkillsPopup()">Choose Statistics</button>
     </mat-dialog-actions>
     <br>
+    <div>
+        <p *ngIf="formIncomplete" class="warning">Please fill in all stats and insure all are between 3 and 18 (results of 3 dice).</p>
+    </div>
+    
 </div>

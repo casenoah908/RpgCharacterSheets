@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Requirements } from './Requirements'
-import { ClassRequirements } from './ClassReq';
+import { ClassRequirements } from './ReqList';
 
 @Injectable({
     providedIn: "root",
