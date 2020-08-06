@@ -8,7 +8,6 @@ import { ClassRequirements } from './ReqList';
 
 export class RequirementsService {
 
-    currentClass: string = "";
 
     constructor(){}
 
@@ -16,23 +15,18 @@ export class RequirementsService {
     ClassReqs = ClassRequirements;
 
 
-    // Pass "menu" of requirements
     // searches through ClassReqs for a Requirements object that matches 
-    // the class/role, and assigns it to a requirements variable that gets
+    // the class/role/value, and assigns it to a requirements variable that gets
     // returned
-    getClassRequirements(){
+    getClassRequirements(value: string){
         var requirements: Requirements; //This doesn't appear to make it void
         this.ClassReqs.forEach(item => {
-            if(item.role == this.currentClass){
+            if(item.role == value){
                 requirements = item;
             }
         })
         return requirements;
     }
-    // class is switched to role because class is a bad variable name in coding
-    // sets the currentClass to the role that was selected by user
-    setReqClass(role){
-        this.currentClass = role;
-    }
+
 
 }

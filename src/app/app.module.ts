@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 //character and race
-import { Character } from './CharacterGen/character';
-import { Race } from './CharacterGen/race';
+import { Character } from './CharacterGen/Objects/character';
+import { Race } from './CharacterGen/Objects/race';
 
 import 'hammerjs';
 
@@ -20,19 +20,20 @@ import { SpellsComponent } from './SheetSegments/spells/spells.component';
 import { EquipmentComponent } from './SheetSegments/equipment/equipment.component';
 import { RacialTraitsComponent } from './SheetSegments/racial-traits/racial-traits.component';
 import { ClassTraitsComponent } from './SheetSegments/class-traits/class-traits.component';
-import { CharacterSheetComponent } from './character-sheet/character-sheet.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { ClassRacePopupComponent } from './Popups/class-race-popup/class-race-popup.component';
-import { SkillsPopupComponent } from './Popups/skills-popup/skills-popup.component';
-import { EquipmentPopupComponent } from './Popups/equipment-popup/equipment-popup.component';
-import { Level1PopupComponent } from './Popups/level1-popup/level1-popup.component';
-import { StatsPopupComponent } from './Popups/stats-popup/stats-popup.component';
+import { CharacterSheetComponent } from './Components/character-sheet/character-sheet.component';
+import { HomePageComponent } from './Components/home-page/home-page.component';
+import { ClassRacePopupComponent } from './Components/Popups/class-race-popup/class-race-popup.component';
+import { SkillsPopupComponent } from './Components/Popups/skills-popup/skills-popup.component';
+import { EquipmentPopupComponent } from './Components/Popups/equipment-popup/equipment-popup.component';
+import { Level1PopupComponent } from './Components/Popups/level1-popup/level1-popup.component';
+import { StatsPopupComponent } from './Components/Popups/stats-popup/stats-popup.component';
+import { BackgroundSkillsComponent } from './Components/Popups/background-skills/background-skills.component';
 
 //popups
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { from } from 'rxjs';
+
 
 
 
@@ -54,6 +55,7 @@ import { from } from 'rxjs';
     EquipmentPopupComponent,
     Level1PopupComponent,
     StatsPopupComponent,
+    BackgroundSkillsComponent,
 
   ],
   entryComponents: [ClassRacePopupComponent],

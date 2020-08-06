@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Character } from '../../CharacterGen/Objects/character';
 import { Race } from '../../CharacterGen/Objects/race';
 
 import { GenerationService } from '../../CharacterGen/generation.service';
 
 @Component({
-  selector: 'app-spells',
-  templateUrl: './spells.component.html',
-  styleUrls: ['./spells.component.css']
+  selector: 'app-character-sheet',
+  templateUrl: './character-sheet.component.html',
+  styleUrls: ['./character-sheet.component.css']
 })
-export class SpellsComponent implements OnInit {
+export class CharacterSheetComponent implements OnInit {
 
   characterInfo: Character;
   raceInfo: Race;
+
 
   constructor(private generationService : GenerationService) { }
 

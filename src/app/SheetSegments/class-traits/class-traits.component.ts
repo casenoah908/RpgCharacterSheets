@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Character } from '../../CharacterGen/character';
-import { Race } from '../../CharacterGen/race';
+import { Character } from '../../CharacterGen/Objects/character';
+import { Race } from '../../CharacterGen/Objects/race';
 
 //requirements
 import { ClassRequirements } from '../../CreationRequirements/ReqList';
 import { Requirements } from '../../CreationRequirements/Requirements';
 import { RequirementsService } from '../../CreationRequirements/requirements.service';
 
-import { ClassTrait } from '../../CharacterGen/classTrait';
+import { ClassTrait } from '../../CharacterGen/Objects/classTrait';
 
 import { GenerationService } from '../../CharacterGen/generation.service';
 import { from } from 'rxjs';

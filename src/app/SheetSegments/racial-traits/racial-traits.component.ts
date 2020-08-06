@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Character } from '../../CharacterGen/character';
-import { Race } from '../../CharacterGen/race';
+import { Character } from '../../CharacterGen/Objects/character';
+import { Race } from '../../CharacterGen/Objects/race';
 
 import { GenerationService } from '../../CharacterGen/generation.service';
 

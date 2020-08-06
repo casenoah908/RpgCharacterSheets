@@ -1,0 +1,26 @@
+<div>
+    <h1>What are you good at?</h1>
+    <hr>
+    <mat-dialog-content>
+        <p>Pick {{backgroundProfs[0]}} skills that come with your background that you want to be proficient in: </p> 
+    <hr>
+    <br>
+
+    <!-- list of checkboxes buttons -->
+    <ul *ngFor="let skill of backgroundProfs | slice:1">
+        <label for="skill"><input type="checkbox" value="{{skill}}" (change)="editSkillProfs($event, skill)">      {{skill}}  </label>
+    </ul>
+
+    </mat-dialog-content>
+
+    <hr>
+
+
+    <mat-dialog-actions>
+        <button mat-raised-button (click)="openSkillsPopup()">Choose Skills</button>
+    </mat-dialog-actions>
+    <br>
+    <div *ngIf="formIncomplete" class="warning">
+        <p>Please select {{limit}} skills.</p>
+    </div>
+</div>

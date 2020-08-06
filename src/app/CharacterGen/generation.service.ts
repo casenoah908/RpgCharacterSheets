@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Character } from './character'
-import { ClassCharData } from './ClassCharData';
-import { RaceList } from './raceList';
-import { Race } from './race';
-import { race } from 'rxjs';
+import { Character } from './Objects/character'
+import { ClassCharData } from './Objects/ClassCharData';
+import { RaceList } from './Objects/raceList';
+import { Race } from './Objects/race';
+import { Background } from './Assets/Backgrounds/background';
+import { BackgroundList } from './Assets/Backgrounds/backgroundList';
 
 @Injectable({
     providedIn: "root",
@@ -11,16 +12,12 @@ import { race } from 'rxjs';
 
 export class GenerationService {
 
-    currentClass: string = "";
-    currentRace: string = "";
-
-    
-
     constructor(){}
 
     // Class and Race Specific Data
     ClassData = ClassCharData;
     RaceData = RaceList;
+    BackgroundData = BackgroundList;
 
     //character and race objects
     characterInfo: Character;
@@ -31,36 +28,37 @@ export class GenerationService {
     // searches through ClassCharData for a Character object that matches 
     // the class/role, and assigns it to a character variable that gets
     // returned
-    getCharacterInfo(){
+    getCharacterInfo(value: string){
         var character: Character; //This doesn't appear to make it void
         this.ClassData.forEach(item => {
-            if(item.getRole() == this.currentClass){
+            if(item.getRole() == value){
                 character = item;
             }
         })
         return character;
-    }
+    };
     
     //get Race Info (from RaceList)
-    getRaceInfo(){
+    getRaceInfo(value: string){
         var raceInfo: Race; 
         this.RaceData.forEach(item => {
-            if(item.name == this.currentRace){
+            if(item.name == value){
                 raceInfo = item;
             }
         })
         return raceInfo;
-    }
+    };
+
+    getBackgroundInfo(value: string){
+        var background: Background;
+        this.BackgroundData.forEach(item => {
+            if(item.name == value){
+                background = item;
+            }
+        })
+        return background;
+    };
     
-    // class is switched to role because class is a bad variable name in coding
-    // sets the currentClass to the role that was selected by user
-    setCharClass(role){
-        this.currentClass = role;
-    }
-    //set the current race
-    setRace(race){
-        this.currentRace = race;
-    }
 
     //takes a character object from final popup and sets any remaining values left to be assigned
     finalizeCharacter(passedCharacter:Character, passedRace: Race){
@@ -129,19 +127,19 @@ export class GenerationService {
             //character has none
         }
         
-    }
+    };
 
     //hold character and race info for passing between routers
     holdInfo(characterInfo:Character, raceInfo: Race){
         this.characterInfo = characterInfo;
         this.raceInfo = raceInfo;
-    }
+    };
     //get character and race info (for passing between routers)
     getPassedCharacterInfo(){
         return this.characterInfo;
-    }
+    };
     getPassedRaceInfo(){
         return this.raceInfo;
-    }
+    };
 
 }
