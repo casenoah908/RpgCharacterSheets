@@ -1,8 +1,10 @@
 import { Weapon } from "../Assets/Items/weapon";
+import { Armor } from '../Assets/Items/armor';
 import { summaryForJitFileName } from '@angular/compiler/src/aot/util';
 import { stringify } from '@angular/compiler/src/util';
 
 import { ClassTrait } from './classTrait';
+import { ArmorsList } from '../Assets/Items/armorsList';
 
 export class Character {
 
@@ -86,11 +88,11 @@ export class Character {
         this.armor_class = value;
     }
 
-    private equippedArmor: string;
+    private equippedArmor: Armor;
     getEquippedArmor() {
         return this.equippedArmor;
     }
-    setEquippedArmor(value: string) {
+    setEquippedArmor(value: Armor) {
         this.equippedArmor = value;
     }
 
@@ -248,34 +250,33 @@ export class Character {
     // ------- //
     // WEAPONS //
     // ------- //
-    private weapons: Array<string>;
+    private weapons: Array<Weapon>;
     getWeapons() {
         return this.weapons;
     }
     clearWeapons() {
         this.weapons = [];
     }
-    addWeapon(value: string) {
+    addWeapon(value: Weapon) {
         this.weapons.push(value);
     }
-    //REMOVE METHOD NOT USED!!!
-    // removeWeapon(value: string) {
-    //     var currentWeapon: string;
-    //     var newWeapon: Array<string> = [];
-    //     //go through entire temporary armors
-    //     for(let i=0; i<this.weapons.length; i++) {
-    //         currentWeapon = this.weapons.pop();
-    //         //current prof is to be removed,
-    //         if (currentWeapon == value) {
-    //             //dont push into new list
-    //         } else { //if current prof isnt to be removed
-    //             //push currentProf to new list
-    //             newWeapon.push(currentWeapon);
-    //         }
-    //     }
-    //     //reset skillProfs to newProfs list
-    //     this.weapons = newWeapon;
-    // }
+    removeWeapon(value: Weapon) {
+        var currentWeapon: Weapon;
+        var newWeapon: Array<Weapon> = [];
+        //go through entire temporary armors
+        for(let i=0; i<this.weapons.length; i++) {
+            currentWeapon = this.weapons.pop();
+            //current prof is to be removed,
+            if (currentWeapon == value) {
+                //dont push into new list
+            } else { //if current prof isnt to be removed
+                //push currentProf to new list
+                newWeapon.push(currentWeapon);
+            }
+        }
+        //reset skillProfs to newProfs list
+        this.weapons = newWeapon;
+    }
 
 
 
@@ -322,14 +323,14 @@ export class Character {
         this.copper = value;
     }
 
-    private armors: Array<string>;
+    private armors: Array<Armor>;
     getArmors() {
         return this.armors;
     }
     clearArmors() {
         this.armors = [];
     }
-    addArmor(value: string) {
+    addArmor(value: Armor) {
         this.armors.push(value);
     }
     //REMOVE METHOD NOT USED!!!
@@ -556,7 +557,7 @@ export class Character {
 
 
 
-    constructor(role: string, classImageUrl: string, hit_dice: number, armors: Array<string>, weapons: Array<string>, packs: Array<string>, others: Array<string>, savingThrowProfs: Array<string>, weaponProfs: Array<string>, armorProfs: Array<string>, toolProfs: Array<string>, spellcastingAbility: string, spellTable: Array<Array<number>>) {
+    constructor(role: string, classImageUrl: string, hit_dice: number, armors: Array<Armor>, weapons: Array<Weapon>, packs: Array<string>, others: Array<string>, savingThrowProfs: Array<string>, weaponProfs: Array<string>, armorProfs: Array<string>, toolProfs: Array<string>, spellcastingAbility: string, spellTable: Array<Array<number>>) {
         //comments by each property label what they are determined by. If none, it's a default value for everyone
 
         // Header Component (COMPLETE)
@@ -571,7 +572,7 @@ export class Character {
 
         // Vitals Component
         this.armor_class = 10; //equipped armor
-        this.equippedArmor = "none"; //equipment user input
+        this.equippedArmor = ArmorsList[0]; //equipment user input, default is unarmored
         this.max_hp = 0; //class and skills
         this.temp_hp = 0;
         this.current_hp = 0; //max_hp
@@ -592,7 +593,7 @@ export class Character {
         this.savingThrowProfs = savingThrowProfs; //class
 
         // Weapons component
-        this.weapons = []; //user input
+        this.weapons = weapons; //user input
 
         // Equipment component
         this.platinum = 0;

@@ -39,14 +39,14 @@
     <div class="col">
         <h5>Armor</h5>
         <ul *ngFor="let armor of characterInfo.getArmors()">
-            <li>{{armor}}</li>
+            <li>{{armor.name}}</li>
         </ul>
         <p>+add</p>
     </div>
     <div class="col">
         <h5>Weapons</h5>
         <ul *ngFor="let weapon of characterInfo.getWeapons()">
-            <li>{{weapon}}</li>
+            <li>{{weapon.name}}</li>
         </ul>
         <p>+add</p>
     </div>

@@ -74,25 +74,6 @@ export class SkillsPopupComponent implements OnInit {
     }
   }
 
-  // removeExtraProfs(){
-  //   for(let i=0; i<this.character.getSkillProfs().length; i++){
-  //     var currentProf: string;
-  //     var newProfs: Array<string> = [];
-  //     for(let k=1; k<this.requirements.skills.length; k++){
-  //       currentProf = this.requirements.skills.pop();
-  //       if(currentProf == this.character.getSkillProfs()[i]){
-  //         // newProfs.push("blah");
-  //       } else if(currentProf != this.character.getSkillProfs()[i]) {
-  //         newProfs.push(currentProf);
-  //       }
-  //     }
-  //     newProfs.push(this.limit.toString());
-  //     newProfs.reverse();
-  //     this.requirements.skills = newProfs;
-  //   }
-  // }
-
-
 
 
   openEquipmentPopup() {

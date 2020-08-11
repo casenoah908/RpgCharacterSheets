@@ -7,7 +7,7 @@ import { ClassTraitRequirements } from '../classTraitRequirements';
         let skills: Array<string> = ['2','Athletics','Insight','Intimidation','Medicine','Persuasion','Religion'];
 
         let armors: Array<string> = [];
-        let weapons: Array<string> = ['One martial weapon and a shield','Two martial weapons'];
+        let weapons: Array<string> = ['One martial weapon and one shield','Two martial weapons'];
         let secondWeapons: Array<string> = ['Five javelins','One simple weapon'];
         let packs: Array<string> = ["Priest's pack","Explorer's pack"];
         let others: Array<string> = [];

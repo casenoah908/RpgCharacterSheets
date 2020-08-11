@@ -9,7 +9,7 @@ let skills: Array<string> = ['3', 'Animal Handling', 'Athletics', 'Insight',
 
 let armors: Array<string> = ["Scale Mail", "Leather Armor"];
 
-let weapons: Array<string> = ['Two shortswords', 'Two simple Melee Weapons'];
+let weapons: Array<string> = ['Two shortswords', 'Two simple melee weapons'];
 
 let secondWeapons: Array<string> = [];
 

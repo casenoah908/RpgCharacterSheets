@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
+
+//Classes
 import { Character } from './Objects/character'
-import { ClassCharData } from './Objects/ClassCharData';
-import { RaceList } from './Objects/raceList';
 import { Race } from './Objects/race';
 import { Background } from './Assets/Backgrounds/background';
+
+//Lists
+import { ClassCharData } from './Objects/ClassCharData';
+import { RaceList } from './Objects/raceList';
 import { BackgroundList } from './Assets/Backgrounds/backgroundList';
+import { ArmorsList } from './Assets/Items/armorsList';
+import { WeaponsList } from './Assets/Items/weaponsList';
+
 
 @Injectable({
     providedIn: "root",
@@ -141,5 +148,64 @@ export class GenerationService {
     getPassedRaceInfo(){
         return this.raceInfo;
     };
+
+    addEquipment(splitString: Array<string>, character: Character){
+        //iterate over splitString (one passed item at a time)
+        for(let i=0; i<splitString.length; i++){
+            //set flag to check if item has been found, so that if it's found in say, armors, it won't be searched for in weapons
+            var found: Boolean = false;
+            var additionCount: number = 1;
+            //check if choice has a two
+            if(splitString[i].includes("two")){
+                //remove the two
+                splitString[i] = splitString[i].replace('two ','');
+                //remove the s to make it singular
+                splitString[i] = splitString[i].slice(0,-1);
+                additionCount = 2;
+            }
+            //check if it exists in armor
+            for(let a=0; a<ArmorsList.length; a++){
+                //if current armor equals current selectedItem...
+                // console.log("At Comparison. splitString[i]: " + splitString[i].toString() + " ArmorsList[a]: " + ArmorsList[a].name.toLowerCase());
+                if(ArmorsList[a].name.toLowerCase() === splitString[i]){
+                    //set flag to true, to stop checking lists
+                    found = true;
+                    //add to armors from ArmorList in order to have full armor object in character's data
+                    character.addArmor(ArmorsList[a]);
+                    character.setEquippedArmor(ArmorsList[a]); 
+                    //return so program stops checking armors
+                    return;
+                }
+            }
+            
+            //if splitString item has not been found in armors (if it's a weapon) ...
+            if(!found){
+                //check if item exists in weapons
+                for(let w=0; w<WeaponsList.length; w++){
+                    //if current weapon equals current selectedItem...
+                    if(WeaponsList[w].name.toLowerCase() === splitString[i]){
+                        //set flag to true, to stop checking lists
+                        found = true;
+                        //add to weapons from WeaponsList in order to have full weapon object in character's data
+                        character.addWeapon(WeaponsList[w]);
+                        //if there are two to be added, add again. (ex: two handaxes)
+                        if(additionCount == 2){
+                            character.addWeapon(WeaponsList[w]); 
+                        } 
+                        //return so program stops checking weapons
+                        return;
+                    }
+                }
+            }
+            //if it's not an armor or weapon...
+            if(!found){
+                //Then it must be an ammunition (like, 20 arrows or something)
+                character.addOthers(splitString[i]);
+            }
+
+            //Now, move on to next item in Equipment Popup Component selection
+        }
+        //iteration over splitSelection finished
+    }
 
 }

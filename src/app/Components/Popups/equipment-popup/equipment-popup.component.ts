@@ -2,9 +2,11 @@ import { Component, OnInit, Inject } from '@angular/core';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { Requirements } from '../../../CreationRequirements/Requirements';
-import { from } from 'rxjs';
+
 
 import { Character } from '../../../CharacterGen/Objects/character';
+
+import { GenerationService } from '../../../CharacterGen/generation.service';
 
 import { Level1PopupComponent } from '../level1-popup/level1-popup.component';
 import { Race } from 'src/app/CharacterGen/Objects/race';
@@ -31,38 +33,35 @@ export class EquipmentPopupComponent implements OnInit {
   //user input flag
   formIncomplete: boolean;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<EquipmentPopupComponent>, public dialog: MatDialog) { }
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<EquipmentPopupComponent>, public dialog: MatDialog, public generationService: GenerationService) { }
 
   ngOnInit(): void {
     this.requirements = this.data.dialogRequirements;
     this.character = this.data.dialogCharacter;
     this.raceInfo = this.data.dialogRaceInfo;
-    //clear arrays so they reset each time it opens
-    // this.character.clearWeapons();
-    // this.character.clearArmors();
-    // this.character.clearPacks();
-    // this.character.clearOthers();
 
     this.formIncomplete = false;
+
   }
 
 
   openLevel1Popup() {
 
     //set choices to "" if there are none
-    if(this.requirements.armors.length == 0){
+    if (this.requirements.armors.length == 0) {
       this.selectedArmor = "";
     }
-    if(this.requirements.weapons.length == 0){
+    if (this.requirements.weapons.length == 0) {
       this.selectedWeapon = "";
     }
-    if(this.requirements.secondWeapons.length == 0){
+    if (this.requirements.secondWeapons.length == 0) {
       this.selectedSecondWeapon = "";
     }
-    if(this.requirements.packs.length == 0){
+    if (this.requirements.packs.length == 0) {
       this.selectedPack = "";
     }
-    if(this.requirements.others.length == 0){
+    if (this.requirements.others.length == 0) {
       this.selectedOther = "";
     }
 
@@ -74,26 +73,60 @@ export class EquipmentPopupComponent implements OnInit {
     //if an armor, 2 weapons, and a pack have been selected...
     else {
       //assign values
-      if(this.selectedArmor != ""){
-        this.character.addArmor(this.selectedArmor);
+      if (this.selectedArmor != "") {
+        //seperate string in case of multiple items
+        //Go to lowercase, remove any instances of "one", split selections at " and "
+        var splitString = this.selectedArmor.toLowerCase().replace(/one /g, '').split(" and ");
+        //pass to generation service to match selections to hardcoded equipment items and then add to character.
+        this.generationService.addEquipment(splitString, this.character);
       }
-      //set equipped armor to chosen armor
-      if(this.selectedArmor != ""){
-        this.character.setEquippedArmor(this.selectedArmor);
+
+      //equipped armor set in addEquipment
+
+      if (this.selectedWeapon != "") {
+
+          //seperate string in case of multiple items
+          //Go to lowercase, remove any instances of "one", split selections at " and "
+          var splitString = this.selectedWeapon.toLowerCase().replace(/one /g, '').split(" and ");
+          for(let i=0; i<splitString.length; i++){
+            if (splitString[i].includes('martial weapon')) {
+              this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });
+            }
+            if (splitString[i].includes('simple weapon')) {
+              this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });
+            }
+          }
+          //pass to generation service to match selections to hardcoded equipment items and then add to character.
+          this.generationService.addEquipment(splitString, this.character);
+        
       }
-      if(this.selectedWeapon != ""){
-        this.character.addWeapon(this.selectedWeapon);
+      if (this.selectedSecondWeapon != "") {
+
+          //seperate string in case of multiple items
+          //Go to lowercase, remove any instances of "one", split selections at " and "
+          var splitString = this.selectedSecondWeapon.toLowerCase().replace(/one /g, '').split(" and ");
+          for(let i=0; i<splitString.length; i++){
+            if (splitString[i].includes('simple weapon')) {
+              this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });
+            }
+            if (splitString[i].includes('martial weapon')) {
+              this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });
+            }
+          }
+          //pass to generation service to match selections to hardcoded equipment items and then add to character.
+          this.generationService.addEquipment(splitString, this.character);
+        
       }
-      if(this.selectedSecondWeapon != ""){
-        this.character.addWeapon(this.selectedSecondWeapon);
+
+
+      if (this.selectedPack != "") {
+        this.character.addPack(this.selectedPack); //packs never include multiple items
       }
-      if(this.selectedPack != ""){
-        this.character.addPack(this.selectedPack);
+      if (this.selectedOther != "") {
+        this.character.addOthers(this.selectedOther); //others never include multiple items
       }
-      if(this.selectedOther != ""){
-        this.character.addOthers(this.selectedOther);
-      }
-      
+
+
       let dialogRef = this.dialog.open(Level1PopupComponent, {
         // size of popup
         width: '800px',

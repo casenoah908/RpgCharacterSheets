@@ -1,9 +1,9 @@
 export interface Armor{
     name: string;
     classification: string; // light, medium, heavy, shield
-    cost: string;
-    armorClass: string;
-    strengthRequirement: string;
+    armorClass: number;
+    strengthRequirement: number;
     stealthDisadvantage: boolean;
     weight: number;
+    cost: string;
 }

@@ -17,7 +17,7 @@
 <!-- Will need to *ngFor this row for the amount of added items -->
     <div class="row p-0 bottomLine" *ngFor="let weapon of characterInfo.getWeapons()">
         <div class="col cell" style="padding-left: 20px;" >
-            <span>{{weapon}}</span> 
+            <span>{{weapon.name}}</span> 
         </div>
         <div class="midCell">
             <span style="float: right;">+ X</span>

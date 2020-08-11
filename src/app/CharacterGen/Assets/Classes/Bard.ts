@@ -1,12 +1,17 @@
 import { Character } from '../../Objects/character';
-
+import { Armor } from '../Items/armor';
+import { Weapon } from '../Items/weapon';
+import { WeaponsList } from '../Items/weaponsList';
+import { ArmorsList } from '../Items/armorsList';
 
 //CLASS SPECIFIC DATA!!!
 
 //armors
-let armors: string[] = ["Leather armor"];
+//leather armor
+let armors: Armor[] = [ArmorsList[2]];
 //weapons
-let weapons: string[] = ["dagger"];
+//dagger
+let weapons: Weapon[] = [WeaponsList[1]];
 //packs
 let packs: string[] = [];
 //others
