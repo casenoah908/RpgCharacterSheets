@@ -24,4 +24,5 @@ export class HeaderComponent implements OnInit {
     this.raceInfo = this.generationService.getPassedRaceInfo();
   }
 
+
 }

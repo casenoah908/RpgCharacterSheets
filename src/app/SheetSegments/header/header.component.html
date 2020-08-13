@@ -1,15 +1,31 @@
-<div class="row">
-    <ul class="list-inline">
-        <li class="list-inline-item"><h2><em>{{characterInfo.getName()}}</em>  |  </h2></li>
-        <li class="list-inline-item"><h3><strong>race: </strong> {{characterInfo.getRace()}} |</h3></li>
-        <li class="list-inline-item"><h3><strong>class: </strong> {{characterInfo.getRole()}} |</h3></li>
-        <li class="list-inline-item"><h3><strong>level: </strong> {{characterInfo.getLevel()}} </h3></li>
-    </ul>
+<div class="row headLine" style="padding-bottom: 3%;">
+    <div class="col-auto">
+        <h2 class="d-inline" style="font-style: italic;">{{characterInfo.getName()}}</h2>
+    </div>
+    <div class="col-auto">
+        <h3 class="d-inline">Race: </h3>
+        <p class="d-inline">{{characterInfo.getRace()}}</p>
+    </div>
+    <div class="col-auto">
+        <h3 class="d-inline">Class: </h3>
+        <p class="d-inline">{{characterInfo.getRole()}}</p>
+    </div>
+    <div class="col-auto">
+        <h3 class="d-inline">Level: </h3>
+        <p class="d-inline">{{characterInfo.getLevel()}}</p>
+    </div>
 </div>
-<div class="row separator">
-    <ul class="list-inline">
-        <li class="list-inline-item"><h3><strong>xp: </strong> {{characterInfo.getXp()}} |</h3></li>
-        <li class="list-inline-item"><h3><strong>background: </strong> {{characterInfo.getBackground()}} |</h3></li>
-        <li class="list-inline-item"><h3><strong>alignment: </strong> {{characterInfo.getAlignment()}} </h3></li>
-    </ul>
+<div class="row headLine seperator">
+    <div class="col-auto"  style="margin-bottom: 3%;">
+        <h3 class="d-inline">Background: </h3>
+        <p class="d-inline">{{characterInfo.getBackground()}}</p>
+    </div>
+    <div class="col-auto" style="margin-bottom: 3%;">
+        <h3 class="d-inline">Alignment: </h3>
+        <p class="d-inline">{{characterInfo.getAlignment()}}</p>
+    </div>
+    <div class="col-auto"  style="margin-bottom: 3%;">
+        <h3 class="d-inline">Xp: </h3>
+        <input class="d-inline" type="number" id="Xp" value="{{characterInfo.getXp()}}" placeholder="{{characterInfo.getXp()}}">
+    </div>
 </div>

@@ -84,7 +84,21 @@ export class GenerationService {
 
         //VITALS
         //armor class (need to make armor objects)
-
+        if(character.getEquippedArmor().classification == 'Light Armor'){
+            character.setArmorClass(character.getEquippedArmor().armorClass + dexterityMod);
+        }
+        else if(character.getEquippedArmor().classification == 'Medium Armor'){
+            console.log('Reached medium aromr if')
+            var limitedDexMod = dexterityMod;
+            if(dexterityMod > 2){
+                limitedDexMod = 2;
+            }
+            character.setArmorClass(character.getEquippedArmor().armorClass + limitedDexMod);
+        }
+        else if(character.getEquippedArmor().classification == 'Heavy Armor'){
+            character.setArmorClass(character.getEquippedArmor().armorClass);
+        }
+        
         //max hp
         character.setMaxHp(character.getHitDice() + constitutionMod); //hit dice max + constitution mod, uses max hp for 1st character
         //current hp
@@ -163,6 +177,13 @@ export class GenerationService {
                 splitString[i] = splitString[i].slice(0,-1);
                 additionCount = 2;
             }
+            if(splitString[i].includes("five")){
+                //remove the five
+                splitString[i] = splitString[i].replace('five ','');
+                //remove the s to make it singular
+                splitString[i] = splitString[i].slice(0,-1);
+                additionCount = 5;
+            }
             //check if it exists in armor
             for(let a=0; a<ArmorsList.length; a++){
                 //if current armor equals current selectedItem...
@@ -174,7 +195,6 @@ export class GenerationService {
                     character.addArmor(ArmorsList[a]);
                     character.setEquippedArmor(ArmorsList[a]); 
                     //return so program stops checking armors
-                    return;
                 }
             }
             
@@ -186,21 +206,22 @@ export class GenerationService {
                     if(WeaponsList[w].name.toLowerCase() === splitString[i]){
                         //set flag to true, to stop checking lists
                         found = true;
-                        //add to weapons from WeaponsList in order to have full weapon object in character's data
-                        character.addWeapon(WeaponsList[w]);
-                        //if there are two to be added, add again. (ex: two handaxes)
-                        if(additionCount == 2){
-                            character.addWeapon(WeaponsList[w]); 
+                        // //add to weapons from WeaponsList in order to have full weapon object in character's data
+                        for(let i=0; i<additionCount; i++){
+                            character.addWeapon(WeaponsList[w]);
                         } 
                         //return so program stops checking weapons
-                        return;
                     }
                 }
             }
             //if it's not an armor or weapon...
             if(!found){
                 //Then it must be an ammunition (like, 20 arrows or something)
-                character.addOthers(splitString[i]);
+                if(!splitString[i].includes('simple')){
+                    if(!splitString[i].includes('martial')){
+                        character.addOthers(splitString[i]);
+                    }
+                }
             }
 
             //Now, move on to next item in Equipment Popup Component selection

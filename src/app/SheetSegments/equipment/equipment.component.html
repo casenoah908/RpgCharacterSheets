@@ -70,7 +70,7 @@
     <div class="col">
         <h5>Other</h5>
         <ul *ngFor="let other of characterInfo.getOthers()">
-            <li>Example</li>
+            <li>{{other}}</li>
         </ul>
         <p>+add</p>
     </div>
@@ -112,21 +112,21 @@
 <div class="row p-2">
     <div class="col">
         <h5>Personality Traits</h5>
-        <textarea>{{characterInfo.getPersonalityTraits()}}</textarea>
+        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getPersonalityTraits()}}</textarea>
     </div>
     <div class="col">
         <h5>Ideals</h5>
-        <textarea>{{characterInfo.getIdeals()}}</textarea>
+        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getIdeals()}}</textarea>
     </div>
 </div>
 
 <div class="row p-2 separator">
     <div class="col">
         <h5>Bonds</h5>
-        <textarea>{{characterInfo.getBonds()}}</textarea>
+        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getBonds()}}</textarea>
     </div>
     <div class="col">
         <h5>Flaws</h5>
-        <textarea>{{characterInfo.getFlaws()}}</textarea>
+        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getFlaws()}}</textarea>
     </div>
 </div>

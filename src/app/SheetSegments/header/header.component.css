@@ -1,11 +1,18 @@
 div{
     background-color: #add8e6;
+}
+.headLine{
     border-bottom-style: solid;
     border-width: 2px;
-    padding-left: 20px;
-    padding-top: 20px;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 3%;
+    font-size: x-large;
 }
-.separator{
-    border-bottom-style: solid;
+.seperator{
     border-width: 4px;
+}
+input{
+    width: 60%;
+    text-align: right;
 }

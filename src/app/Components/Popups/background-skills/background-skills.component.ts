@@ -30,20 +30,18 @@ export class BackgroundSkillsComponent implements OnInit {
     this.character = this.data.dialogCharacter;
     this.raceInfo = this.data.dialogRaceInfo;
     this.backgroundProfs = this.data.dialogBackgroundInfo;
-    this.limit = Number(this.backgroundProfs[0]); 
+    this.limit = Number(this.backgroundProfs[0]);
     this.formIncomplete = false;
 
-    //this.removeExtraProfs();
+    this.removeExtraProfs();
   }
 
-//MESSY!!! (searches back through backgroundProfs for proper index in removeSkillProf() when it could keep track of the right index)
   removeExtraProfs(){
-    for(let i=0; i<this.backgroundProfs.length; i++){
-      for(let j=0; j<this.character.getSkillProfs().length; j++){
-        if( this.backgroundProfs[i] == this.character.getSkillProfs()[j]){
+    for (let i =0; i<this.character.getSkillProfs().length; i++){
+      for (let j=1; j<this.backgroundProfs.length; j++){
+        if(this.backgroundProfs[j] == this.character.getSkillProfs()[i]){
           //remove proficiency from display list if character already has it.
-          this.removeSkillProf(this.backgroundProfs[i]);
-          return;
+          this.backgroundProfs.splice(j,1);
         }
       }
     }
@@ -71,23 +69,6 @@ export class BackgroundSkillsComponent implements OnInit {
       //decrease limit
       this.checkCount--;
     }
-  }
-
-
-  removeSkillProf(value: string){
-    var currentProf: string;
-    var newProfs: Array<string> = [];
-    for(let i=0; i<this.backgroundProfs.length; i++){
-      currentProf = this.backgroundProfs.pop();
-      if(currentProf == value){
-        //dont push into new list
-      } else {
-        //push currentProf to new list
-        newProfs.push(currentProf);
-      }
-    }
-    //reset backgorundProfs to new Profs list
-    this.backgroundProfs = newProfs;
   }
 
   openSkillsPopup() {

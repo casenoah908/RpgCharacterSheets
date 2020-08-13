@@ -6,8 +6,8 @@ import { ClassTraitRequirements } from '../classTraitRequirements';
 
         let skills: Array<string> = ['2','History','Insight','Medicine','Persuasion','Religion'];
 
-        let armors: Array<string> = ['Scale Mail','Leather Armor','Chain Mail (if proficient)'];
-        let weapons: Array<string> = ['One mace','One warhammer (if proficient)'];
+        let armors: Array<string> = ['Scale Mail','Leather Armor','Chain Mail : if proficient'];
+        let weapons: Array<string> = ['One mace','One warhammer : if proficient'];
         let secondWeapons: Array<string> = ['One light crossbow and 20 bolts','One simple weapon'];
         let packs: Array<string> = ["Priest's pack","Explorer's pack"];
         let others: Array<string> = [];

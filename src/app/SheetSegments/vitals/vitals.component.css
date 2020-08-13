@@ -1,6 +1,7 @@
 div{
     background-color: #ff6961;
     text-align: center;
+    justify-content: center;
 }
 .separator{
     border-bottom-style: solid;
@@ -12,4 +13,16 @@ i{
 }
 input{
     margin: 2%;
+}
+.box{
+    font-size: larger;
+    font-weight: bold;
+    text-align: center;
+    border-style: solid;
+    width: fit-content;
+    border-width: 1px;
+    border-radius: 10%;
+    padding: 5%;
+    justify-content: center;
+    background-color: white;
 }

@@ -7,7 +7,7 @@ let role: string = "Fighter";
 let skills: Array<string> = ['2', 'Acrobatics', 'Animal Handling', 'Athletics',
     'History', 'Insight', 'Intimidation', 'Perception', 'Survival'];
 
-let armors: Array<string> = ["Chain Mail", "Leather Armor and Longbow with 20 arrows"];
+let armors: Array<string> = ["Chain Mail", "Leather Armor and Longbow and 20 arrows"];
 
 let weapons: Array<string> = ['One martial weapon and one shield', 'Two martial weapons'];
 

@@ -76,7 +76,7 @@ export class EquipmentPopupComponent implements OnInit {
       if (this.selectedArmor != "") {
         //seperate string in case of multiple items
         //Go to lowercase, remove any instances of "one", split selections at " and "
-        var splitString = this.selectedArmor.toLowerCase().replace(/one /g, '').split(" and ");
+        var splitString = this.selectedArmor.toLowerCase().replace(/one /g, '').replace(/ : if proficient/g,'').split(" and ");
         //pass to generation service to match selections to hardcoded equipment items and then add to character.
         this.generationService.addEquipment(splitString, this.character);
       }
@@ -87,12 +87,12 @@ export class EquipmentPopupComponent implements OnInit {
 
           //seperate string in case of multiple items
           //Go to lowercase, remove any instances of "one", split selections at " and "
-          var splitString = this.selectedWeapon.toLowerCase().replace(/one /g, '').split(" and ");
+          var splitString = this.selectedWeapon.toLowerCase().replace(/one /g, '').replace(/ : if proficient/g,'').split(" and ");
           for(let i=0; i<splitString.length; i++){
-            if (splitString[i].includes('martial weapon')) {
+            if (splitString[i].includes('martial')) {
               this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });
             }
-            if (splitString[i].includes('simple weapon')) {
+            if (splitString[i].includes('simple')) {
               this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });
             }
           }
@@ -104,7 +104,7 @@ export class EquipmentPopupComponent implements OnInit {
 
           //seperate string in case of multiple items
           //Go to lowercase, remove any instances of "one", split selections at " and "
-          var splitString = this.selectedSecondWeapon.toLowerCase().replace(/one /g, '').split(" and ");
+          var splitString = this.selectedSecondWeapon.toLowerCase().replace(/one /g, '').replace(/ : if proficient/g,'').split(" and ");
           for(let i=0; i<splitString.length; i++){
             if (splitString[i].includes('simple weapon')) {
               this.character.addWeapon({name: splitString[i], classification: '', price: '0', damageType: '', damageDie: [0], weight: 0, bonusType: [''], properties: [''] });

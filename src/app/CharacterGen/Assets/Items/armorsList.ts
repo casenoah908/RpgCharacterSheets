@@ -25,5 +25,6 @@ export const ArmorsList: Armor[] = [
     
     //Shield
     {name: 'Shield', classification: 'Shield', armorClass: 2, strengthRequirement: 0, stealthDisadvantage: false, weight: 6, cost: '10 gp'},
+    {name: 'Wooden Shield', classification: 'Shield', armorClass: 2, strengthRequirement: 0, stealthDisadvantage: false, weight: 6, cost: '10 gp'}
 
 ];

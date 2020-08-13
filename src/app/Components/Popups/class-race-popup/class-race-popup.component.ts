@@ -96,6 +96,9 @@ export class ClassRacePopupComponent implements OnInit {
       // except now we have to assign the user input in this popup to their respective properties
       this.character.setName(this.name);
       this.character.setRace(this.race);
+      this.raceInfo.skillProficiencies.forEach(item => {
+        this.character.addSkillProfs(item);
+      });
       this.character.setBackground(this.background);
       this.character.setAlignment(this.alignment);
       //add to proficiencies from background proficiencies (could be none, one, or two)

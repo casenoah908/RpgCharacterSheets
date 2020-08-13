@@ -74,8 +74,6 @@ export class SkillsPopupComponent implements OnInit {
     }
   }
 
-
-
   openEquipmentPopup() {
 
     //check user input is complete
