@@ -1,0 +1,31 @@
+<h1>Select a Pack to Equip</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Weight</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr *ngFor="let pack of packList; let i = index;" (click)="selectPack(pack, i)" [class.active] = "i == selectedRow">
+                <td>{{pack.name}}</td>
+                <td>{{pack.weight}} lbs.</td>
+                <td>{{pack.cost}}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addPack()">Add Pack</button>
+</mat-dialog-actions>

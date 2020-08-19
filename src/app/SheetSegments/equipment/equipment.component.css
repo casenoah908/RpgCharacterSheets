@@ -43,3 +43,13 @@ p{
     margin-left: 9%;
     margin-top: 5%;
 }
+a{
+    margin-left: 9%;
+    color: #FCF4A3;
+}
+a:hover{
+    margin-left: 9%;
+    color: #FCF4A3;
+    cursor: pointer;
+    text-decoration: underline;
+}

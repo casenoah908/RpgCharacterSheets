@@ -41,21 +41,20 @@
         <ul *ngFor="let armor of characterInfo.getArmors()">
             <li>{{armor.name}}</li>
         </ul>
-        <p>+add</p>
+        <a (click)="addArmor()">+add</a>
     </div>
     <div class="col">
         <h5>Weapons</h5>
         <ul *ngFor="let weapon of characterInfo.getWeapons()">
             <li>{{weapon.name}}</li>
         </ul>
-        <p>+add</p>
     </div>
     <div class="col">
         <h5>Packs</h5>
         <ul *ngFor="let pack of characterInfo.getPacks()">
             <li>{{pack}}</li>
         </ul>
-        <p>+add</p>
+        <a (click)="addPack()">+add</a>
     </div>
 </div>
 
@@ -65,14 +64,14 @@
         <ul *ngFor="let language of characterInfo.getLanguages()">
             <li>{{language}}</li>
         </ul>
-        <p>+add</p>
+        <a (click)="addLanguage()">+add</a>
     </div>
     <div class="col">
         <h5>Other</h5>
         <ul *ngFor="let other of characterInfo.getOthers()">
             <li>{{other}}</li>
         </ul>
-        <p>+add</p>
+        <a (click)="addOther()">+add</a>
     </div>
     <div class="col">
         <!-- for alignment (template wise, not the character property) -->
@@ -88,21 +87,21 @@
         <ul *ngFor="let armorProf of characterInfo.getArmorProfs()">
             <li>{{armorProf}}</li>
         </ul>
-        <p>+add</p> 
+        <a (click)="addArmorProf()">+add</a>
     </div>
     <div class="col">
         <h5>Weapon Proficiencies</h5>
         <ul *ngFor="let weaponProf of characterInfo.getWeaponProfs()">
             <li>{{weaponProf}}</li>
         </ul>
-        <p>+add</p>
+        <a (click)="addWeaponProf()">+add</a>
     </div>
     <div class="col">
         <h5>Tool Proficiencies</h5>
         <ul *ngFor="let toolProf of characterInfo.getToolProfs()">
             <li>{{toolProf}}</li>
         </ul>
-        <p>+add</p>
+        <a (click)="addToolProf()">+add</a>
     </div>
 </div>
 
@@ -112,21 +111,21 @@
 <div class="row p-2">
     <div class="col">
         <h5>Personality Traits</h5>
-        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getPersonalityTraits()}}</textarea>
+        <textarea placeholder="Write whatever you want here.">{{characterInfo.getPersonalityTraits()}}</textarea>
     </div>
     <div class="col">
         <h5>Ideals</h5>
-        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getIdeals()}}</textarea>
+        <textarea placeholder="Write whatever you want here.">{{characterInfo.getIdeals()}}</textarea>
     </div>
 </div>
 
 <div class="row p-2 separator">
     <div class="col">
         <h5>Bonds</h5>
-        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getBonds()}}</textarea>
+        <textarea placeholder="Write whatever you want here.">{{characterInfo.getBonds()}}</textarea>
     </div>
     <div class="col">
         <h5>Flaws</h5>
-        <textarea placeholder="Write Whatever you want here.">{{characterInfo.getFlaws()}}</textarea>
+        <textarea placeholder="Write whatever you want here.">{{characterInfo.getFlaws()}}</textarea>
     </div>
 </div>

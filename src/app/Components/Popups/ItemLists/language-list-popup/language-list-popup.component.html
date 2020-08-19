@@ -1,0 +1,25 @@
+<h1>Select a Language:</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Languages</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let lang of languages; let i = index;" (click)="selectLanguage(lang, i)" [class.active] = "i == selectedRow">
+                <td>{{lang}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addLanguage()">Add Language</button>
+</mat-dialog-actions>

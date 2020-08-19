@@ -5,6 +5,11 @@ import { Race } from '../../CharacterGen/Objects/race';
 
 import { GenerationService } from '../../CharacterGen/generation.service';
 
+//icons
+import{ faHeart } from '@fortawesome/free-regular-svg-icons';
+import { faShieldAlt } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'app-vitals',
   templateUrl: './vitals.component.html',
@@ -14,6 +19,10 @@ export class VitalsComponent implements OnInit {
 
   characterInfo: Character;
   raceInfo: Race;
+
+  //icons
+  faHeart = faHeart;
+  faShield = faShieldAlt;
 
   constructor(private generationService : GenerationService) { }
 

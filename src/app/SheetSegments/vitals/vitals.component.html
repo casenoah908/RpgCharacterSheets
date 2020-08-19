@@ -1,58 +1,103 @@
-<div class="row" style="border-width: 2px; border-bottom-style: solid">
-    <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        ARMOR CLASS:
-        {{characterInfo.getArmorClass()}}
+<!-- Armor Class, Health, Initiative/Speed -->
+<div class="row" style="border-width: 2px; border-bottom-style: solid;">
+    <!-- AC -->
+    <div class="col container center" style="border-right-width: 2px; border-right-style: solid;">
+        <div>
+            ARMOR CLASS:
+            <br>
+            <fa-layers [fixedWidth]="true" style="font-size: 70px;">
+                <fa-icon [icon]="faShield" size="lg" style="color:darkgrey"></fa-icon>
+                <fa-layers-text content="{{characterInfo.getArmorClass()}}" transform="shrink-8"></fa-layers-text>
+            </fa-layers>
+            
+        </div>
     </div>
-    <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        MAX HP:
-        {{characterInfo.getMaxHp()}}
-        <br>
-        CURRENT HP:
-        {{characterInfo.getCurrentHp()}}
-        <br>
-        TEMP HP:
-        {{characterInfo.getTempHp()}}
+    <!-- Max HP -->
+    <div class="col container center">
+        <div>
+            MAX HP:
+            <br>
+            {{characterInfo.getMaxHp()}}
+        </div>
     </div>
-    <div class="col">
-        INITIATIVE:
-        <span *ngIf="characterInfo.getInitiative()<0">{{characterInfo.getInitiative()}}</span>
-        <span *ngIf="characterInfo.getInitiative()>0">+{{characterInfo.getInitiative()}}</span>
-        <br>
-        SPEED:
-        {{characterInfo.getSpeed()}} ft.
-
+    <!-- Current Hp -->
+    <div class="col container center">
+        <div>
+            CURRENT HP:
+            <br>
+            <fa-layers [fixedWidth]="true" style="font-size: 70px;">
+                <fa-icon [icon]="faHeart" size="lg"></fa-icon>
+                <fa-layers-text content="{{characterInfo.getCurrentHp()}}" transform="shrink-8"></fa-layers-text>
+            </fa-layers>
+        </div>
+    </div>
+    <!-- Temp Hp -->
+    <div class="col container center" style="border-right-width: 2px; border-right-style: solid;">
+        <div>
+            TEMP HP:
+            <br>
+            {{characterInfo.getTempHp()}}
+        </div>
+    </div>
+    <!-- Initiative/speed -->
+    <div class="col container center">
+        <div>
+            INITIATIVE:
+            <span *ngIf="characterInfo.getInitiative()<0">{{characterInfo.getInitiative()}}</span>
+            <span *ngIf="characterInfo.getInitiative()>0">+{{characterInfo.getInitiative()}}</span>
+            <span *ngIf="characterInfo.getInitiative()==0">+{{characterInfo.getInitiative()}}</span>
+            <br>
+            SPEED:
+            {{characterInfo.getSpeed()}} ft.
+        </div>
     </div>
 </div>
+
+
+<!-- Armor Class, Health, Initiative/Speed -->
 <div class="row separator">
-    <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        PASSIVE WISDOM:
-        {{characterInfo.getPassiveWisdom()}}
-    </div>
-    <div class="col" style="border-right-width: 2px; border-right-style: solid; justify-content: end;">
-        HIT DICE:
-        <br>
-        <div class="container box">
-            d{{characterInfo.getHitDice()}}
+    <!-- Passive wisdom -->
+    <div class="col container center" style="border-right-width: 2px; border-right-style: solid;">
+        <div>
+            PASSIVE WISDOM:
+            <br>
+            {{characterInfo.getPassiveWisdom()}}
         </div>
-        
     </div>
-    <div class="col" style="border-right-width: 2px; border-right-style: solid;">
-        DEATH SAVES:
-        <div class="container">
-            <div class="row">
-                <p>Successes:</p> <input style="margin-left: 3%" type="radio" value="success"><input type="radio"
-                    value="success"><input type="radio" value="success">
-            </div>
-            <div class="row">
-                <p>Failures: </p> <input style="margin-left: 3%" type="radio" value="failures"><input type="radio"
-                    value="failures"><input type="radio" value="failures">
+    <!-- hit dice -->
+    <div class="col container center"  style="border-right-width: 2px; border-right-style: solid;">
+        <div>
+            HIT DICE:
+            <br>
+            <div class="container box">
+                d{{characterInfo.getHitDice()}}
             </div>
         </div>
-        <!-- Make DeathSaves Box -->
     </div>
-    <div class="col">
-        INSPIRATION:
-        <br>
-        <input type="checkbox" value="inspired">
+    <!-- death saves -->
+    <div class="col-4 container center" style="border-right-width: 2px; border-right-style: solid;">
+        <div>
+            DEATH SAVES:
+            <div class="box" style="font-size: medium; border-radius: 7%;">
+
+                    <p class="d-inline">Successes:</p> <input style="margin-left: 3%" type="radio" value="success"><input class="d-inline" type="radio"
+                        value="success"><input type="radio" value="success">
+
+
+                    <p class="d-inline">Failures: </p> <input class="d-inline" style="margin-left: 3%" type="radio" value="failures"><input type="radio"
+                        value="failures"><input type="radio" value="failures">
+
+            </div>
+            
+            <!-- Make DeathSaves Box -->
+        </div>
+    </div>
+    <!-- Inspiration -->
+    <div class="col container center">
+        <div>
+            INSPIRATION:
+            <br>
+            <input class="checkbox" type="checkbox" value="inspired">
+        </div>
     </div>
 </div>

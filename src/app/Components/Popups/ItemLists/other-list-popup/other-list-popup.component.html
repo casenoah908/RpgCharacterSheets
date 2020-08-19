@@ -1,0 +1,14 @@
+<h1>Add an additional Item:</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <h2>Type your item here:</h2>
+    <input type="text" [(ngModel)]="otherItem">
+    <br>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addOther()">Add</button>
+</mat-dialog-actions>

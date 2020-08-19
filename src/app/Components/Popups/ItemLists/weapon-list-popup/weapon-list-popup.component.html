@@ -1,0 +1,54 @@
+<h1>Select a Weapon to Equip</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Damage</th>
+                <th>Weight</th>
+                <th>Properties</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr><th>Simple Weapons</th><th></th><th></th><th></th><th></th></tr>
+
+            <tr *ngFor="let weapon of weaponList.slice(0,15); let i = index;" (click)="selectSimpleWeapon(weapon, i)" [class.active] = "i == selectedSimpleRow">
+                <td>{{weapon.name}}</td>
+                <td>{{weapon.price}}</td>
+                <td *ngIf="weapon.damageDie.length == 1">1 d{{weapon.damageDie[0]}}, {{weapon.damageType}}</td>
+                <td *ngIf="weapon.damageDie.length == 2">2 d{{weapon.damageDie[0]}}, {{weapon.damageType}}</td>
+                <!-- if weight is 1 pound, dont use lbs. -->
+                <td *ngIf="weapon.weight>1">{{weapon.weight}} lbs.</td>
+                <td *ngIf="weapon.weight==1">{{weapon.weight}} lb.</td>
+                <td *ngIf="weapon.weight<1">{{weapon.weight}} lb.</td>
+                <td>
+                    <p *ngFor="let property of weapon.properties" class="d-inline">{{property}}, </p>
+                </td>
+            </tr>
+
+            <tr><th>Martial Weapons</th><th></th><th></th><th></th><th></th></tr>
+
+            <tr *ngFor="let weapon of weaponList.slice(15,38); let i = index;" (click)="selectMartialWeapon(weapon, i)" [class.active] = "i == selectedMartialRow">
+                <td>{{weapon.name}}</td>
+                <td>{{weapon.price}}</td>
+                <td *ngIf="weapon.damageDie.length == 1">1 d{{weapon.damageDie[0]}}, {{weapon.damageType}}</td>
+                <td *ngIf="weapon.damageDie.length == 2">2 d{{weapon.damageDie[0]}}, {{weapon.damageType}}</td>
+                <!-- if weight is 1 pound, dont use lbs. -->
+                <td *ngIf="weapon.weight>1">{{weapon.weight}} lbs.</td>
+                <td *ngIf="weapon.weight==1">{{weapon.weight}} lb.</td>
+                <td *ngIf="weapon.weight<1">{{weapon.weight}} lb.</td>
+                <td>
+                    <p *ngFor="let property of weapon.properties" class="d-inline">{{property}}, </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</mat-dialog-content>
+<hr>
+<mat-dialog-actions>
+    <button (click)="equipWeapon()">Equip Weapon</button>
+</mat-dialog-actions>

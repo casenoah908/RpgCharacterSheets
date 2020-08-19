@@ -33,6 +33,18 @@ import { BackgroundSkillsComponent } from './Components/Popups/background-skills
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { WeaponListPopupComponent } from './Components/Popups/ItemLists/weapon-list-popup/weapon-list-popup.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { LanguageListPopupComponent } from './Components/Popups/ItemLists/language-list-popup/language-list-popup.component';
+import { PackListPopupComponent } from './Components/Popups/ItemLists/pack-list-popup/pack-list-popup.component';
+import { ArmorListPopupComponent } from './Components/Popups/ItemLists/armor-list-popup/armor-list-popup.component';
+import { OtherListPopupComponent } from './Components/Popups/ItemLists/other-list-popup/other-list-popup.component';
+import { ArmorProfListPopupComponent } from './Components/Popups/ItemLists/armor-prof-list-popup/armor-prof-list-popup.component';
+import { WeaponProfListPopupComponent } from './Components/Popups/ItemLists/weapon-prof-list-popup/weapon-prof-list-popup.component';
+import { ToolProfListPopupComponent } from './Components/Popups/ItemLists/tool-prof-list-popup/tool-prof-list-popup.component';
 
 
 
@@ -57,6 +69,14 @@ import { MatCardModule } from '@angular/material/card';
     Level1PopupComponent,
     StatsPopupComponent,
     BackgroundSkillsComponent,
+    WeaponListPopupComponent,
+    LanguageListPopupComponent,
+    PackListPopupComponent,
+    ArmorListPopupComponent,
+    OtherListPopupComponent,
+    ArmorProfListPopupComponent,
+    WeaponProfListPopupComponent,
+    ToolProfListPopupComponent,
 
   ],
   entryComponents: [ClassRacePopupComponent],
@@ -70,7 +90,11 @@ import { MatCardModule } from '@angular/material/card';
     RouterModule.forRoot([
       { path: '', component: HomePageComponent},
       { path: 'sheet', component: CharacterSheetComponent}
-    ])
+    ]),
+    FontAwesomeModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   
   providers: [],

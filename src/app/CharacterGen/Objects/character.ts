@@ -261,14 +261,16 @@ export class Character {
         this.weapons.push(value);
     }
     removeWeapon(value: Weapon) {
+        var removed: boolean = false;
         var currentWeapon: Weapon;
         var newWeapon: Array<Weapon> = [];
         //go through entire temporary armors
         for(let i=0; i<this.weapons.length; i++) {
             currentWeapon = this.weapons.pop();
             //current prof is to be removed,
-            if (currentWeapon == value) {
+            if ((currentWeapon == value) && !removed) {
                 //dont push into new list
+                removed = true;
             } else { //if current prof isnt to be removed
                 //push currentProf to new list
                 newWeapon.push(currentWeapon);
@@ -276,6 +278,22 @@ export class Character {
         }
         //reset skillProfs to newProfs list
         this.weapons = newWeapon;
+    }
+
+    private attackBonuses: Array<number>;
+    getAttackBonuses(){
+        return this.attackBonuses;
+    }
+    setAttackBonuses(value: Array<number>){
+        this.attackBonuses = value;
+    }
+
+    private damageBonuses: Array<number>;
+    getDamageBonuses(){
+        return this.damageBonuses;
+    }
+    setDamageBonuses(value: Array<number>){
+        this.damageBonuses = value;
     }
 
 
@@ -414,6 +432,9 @@ export class Character {
     private weaponProfs: Array<string>;
     getWeaponProfs() {
         return this.weaponProfs;
+    }
+    clearWeaponProfs(){
+        this.weaponProfs = [];
     }
     setWeaponProfs(value: Array<string>) {
         this.weaponProfs = value;
@@ -594,6 +615,8 @@ export class Character {
 
         // Weapons component
         this.weapons = weapons; //user input
+        this.attackBonuses = [];
+        this.damageBonuses = [];
 
         // Equipment component
         this.platinum = 0;
@@ -628,6 +651,7 @@ export class Character {
         this.classTraits = []; //user input
 
     }
+
 
 
 }
