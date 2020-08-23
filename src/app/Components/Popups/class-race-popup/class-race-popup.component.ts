@@ -45,13 +45,14 @@ export class ClassRacePopupComponent implements OnInit {
   alignment: string = '';
 
 
+  userId: number;
 
 
-
-  constructor(private generationService: GenerationService, private requirementsService: RequirementsService, public thisDialogRef: MatDialogRef<ClassRacePopupComponent>, @Inject(MAT_DIALOG_DATA) public data: string, public dialog: MatDialog) { }
+  constructor(private generationService: GenerationService, private requirementsService: RequirementsService, public thisDialogRef: MatDialogRef<ClassRacePopupComponent>, @Inject(MAT_DIALOG_DATA) public data, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.formIncomplete = false;
+    this.userId = this.data.dialogUser.id;
   }
 
 
@@ -76,13 +77,12 @@ export class ClassRacePopupComponent implements OnInit {
       //---------------------//
       //-- Retreiving Data --//
       //---------------------//
-
       // use class to assign to grab specific requirements object
       this.requirements = this.requirementsService.getClassRequirements(this.role);
 
       // now do the same but for a charData object
       this.character = this.generationService.getCharacterInfo(this.role);
-
+      this.character.setUser(this.userId);
       //get hardcoded raceInfo
       this.raceInfo = this.generationService.getRaceInfo(this.race);
 

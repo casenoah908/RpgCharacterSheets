@@ -46,6 +46,7 @@ export class WeaponListPopupComponent implements OnInit {
 
   equipWeapon(){
     this.characterInfo.addWeapon(this.selectedWeapon);
+    this.generationService.createBonusArrays(this.characterInfo);
     this.generationService.finalizeCharacter(this.characterInfo, this.raceInfo);
     this.generationService.finalizeCharacter(this.characterInfo, this.raceInfo);
     this.thisDialogRef.close();

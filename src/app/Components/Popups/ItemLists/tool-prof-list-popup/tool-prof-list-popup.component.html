@@ -1,1 +1,25 @@
-<p>tool-prof-list-popup works!</p>
+<h1>Select a new Tool Proficiency:</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Tool Proficiencies</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let toolProf of toolProfs; let i = index;" (click)="selectToolProf(toolProf, i)" [class.active] = "i == selectedRow">
+                <td>{{toolProf}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addToolProf()">Add Tool Proficiency</button>
+</mat-dialog-actions>

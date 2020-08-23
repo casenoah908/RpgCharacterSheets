@@ -12,7 +12,8 @@
     </div>
     <div class="col-auto">
         <h3 class="d-inline">Level: </h3>
-        <p class="d-inline">{{characterInfo.getLevel()}}</p>
+        <p class="d-inline">{{characterInfo.getLevel()}}  </p>
+        <fa-icon class="d-inline" [icon]="faPlusCircle" size="md" (click)="levelUp()"></fa-icon>
     </div>
 </div>
 <div class="row headLine seperator">

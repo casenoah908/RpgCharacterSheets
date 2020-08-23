@@ -1,0 +1,26 @@
+<div class="bg">
+    <div class="container-fluid w-75 pt-5 pb-5">
+        <mat-card class="card1 card">
+          <mat-card-header>
+            <mat-card-title>
+              <h1>Create an Account!</h1>
+            </mat-card-title>
+          </mat-card-header>
+    
+          <hr>
+    
+          <mat-card-content>
+            Username: <input type="text" name="username" id="username" [(ngModel)]="username">
+            <br><br>
+            Password: <input type="password" name="password" id="password" [(ngModel)]="password">
+            <br><br>
+            Password (again): <input type="password" name="password2" id="password2" [(ngModel)]="password2">
+            <br><br>
+            <button (click)="createAccount()">Create Account</button>
+            <p *ngIf="invalidPass" style="color: red">Passwords don't match</p>
+            <p *ngIf="invalidUser" style="color: red;">Username already taken</p>
+            <p *ngIf="invalidInput" style="color: red;">Please fill out the form</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+</div>

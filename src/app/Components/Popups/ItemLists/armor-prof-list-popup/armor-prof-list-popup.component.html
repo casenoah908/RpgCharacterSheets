@@ -1,1 +1,25 @@
-<p>armor-prof-list-popup works!</p>
+<h1>Select a new Armor Proficiency:</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Armor Proficiencies</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let armorProf of armorProfs; let i = index;" (click)="selectArmorProf(armorProf, i)" [class.active] = "i == selectedRow">
+                <td>{{armorProf}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addArmorProf()">Add Armor Proficiency</button>
+</mat-dialog-actions>

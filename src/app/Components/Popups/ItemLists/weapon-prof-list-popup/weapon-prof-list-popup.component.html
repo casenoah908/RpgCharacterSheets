@@ -1,1 +1,25 @@
-<p>weapon-prof-list-popup works!</p>
+<h1>Select a new Weapon Proficiency:</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Weapon Proficiencies</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let weaponProf of weaponProfs; let i = index;" (click)="selectWeaponProf(weaponProf, i)" [class.active] = "i == selectedRow">
+                <td>{{weaponProf}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addWeaponProf()">Add Weapon Proficiency</button>
+</mat-dialog-actions>

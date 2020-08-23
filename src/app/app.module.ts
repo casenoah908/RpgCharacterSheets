@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 //character and race
 import { Character } from './CharacterGen/Objects/character';
@@ -45,6 +46,11 @@ import { OtherListPopupComponent } from './Components/Popups/ItemLists/other-lis
 import { ArmorProfListPopupComponent } from './Components/Popups/ItemLists/armor-prof-list-popup/armor-prof-list-popup.component';
 import { WeaponProfListPopupComponent } from './Components/Popups/ItemLists/weapon-prof-list-popup/weapon-prof-list-popup.component';
 import { ToolProfListPopupComponent } from './Components/Popups/ItemLists/tool-prof-list-popup/tool-prof-list-popup.component';
+import { LevelUpPopupComponent } from './Components/Popups/LevelUps/level-up-popup/level-up-popup.component';
+import { SpellsPopupComponent } from './Components/Popups/ItemLists/spells-popup/spells-popup.component';
+import { SpellDetailPopupComponent } from './Components/Popups/ItemLists/spell-detail-popup/spell-detail-popup.component';
+import { LoginComponent } from './Components/login/login.component';
+import { CreateAccountComponent } from './Components/create-account/create-account.component';
 
 
 
@@ -77,6 +83,11 @@ import { ToolProfListPopupComponent } from './Components/Popups/ItemLists/tool-p
     ArmorProfListPopupComponent,
     WeaponProfListPopupComponent,
     ToolProfListPopupComponent,
+    LevelUpPopupComponent,
+    SpellsPopupComponent,
+    SpellDetailPopupComponent,
+    LoginComponent,
+    CreateAccountComponent,
 
   ],
   entryComponents: [ClassRacePopupComponent],
@@ -88,13 +99,16 @@ import { ToolProfListPopupComponent } from './Components/Popups/ItemLists/tool-p
     MatButtonModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomePageComponent},
+      { path: '', component: LoginComponent},
+      { path: 'userHome', component: HomePageComponent},
+      { path: 'createAccount', component: CreateAccountComponent},
       { path: 'sheet', component: CharacterSheetComponent}
     ]),
     FontAwesomeModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
   
   providers: [],

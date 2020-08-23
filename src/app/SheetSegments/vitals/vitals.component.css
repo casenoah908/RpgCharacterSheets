@@ -35,6 +35,7 @@ input{
 }
 
 
+
 .checkbox{
     transform: scale(1.5);
     margin-top: 5%;
@@ -44,3 +45,15 @@ fa-layers{
     margin-top: 15%;
     margin-bottom: 15%;
 }
+.Hp{
+    width: 30%;
+    text-align: center;
+}
+.harm{
+    background-color: red;
+    margin-right: 2%;
+}
+.heal{
+    background-color: green;
+}
+

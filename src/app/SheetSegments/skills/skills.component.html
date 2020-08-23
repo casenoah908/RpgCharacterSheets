@@ -37,21 +37,22 @@
     <div class="col">
         <ul class="list-group skillBorder">
             <li class="list-group-item list-group-item-primary"><span style="float: left;">Saving Throw:
-                </span><span style="float: right;">{{getSaveBonus("Strength")}}</span></li>
+                </span><span style="float: right;" [class.proficient] = "proficient">{{getSaveBonus("Strength")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Athletics: </span> <span
-                    style="float: right;">{{getSkillBonus("Strength", "Athletics")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Strength", "Athletics")}}</span></li>
+                    <!-- if expert, toggle different css class -->
         </ul>
     </div>
     <!-- Dexterity Skills -->
     <div class="col">
         <ul class="list-group skillBorder">
             <li class="list-group-item list-group-item-primary"><span style="float: left;">Saving Throw:
-                </span><span style="float: right;">{{getSaveBonus("Dexterity")}}</span></li>
+                </span><span style="float: right;" [class.proficient] = "proficient">{{getSaveBonus("Dexterity")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Acrobatics: </span><span
-                    style="float: right;">{{getSkillBonus("Dexterity", "Acrobatics")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Dexterity", "Acrobatics")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Sleight of Hand: </span><span
-                    style="float: right;">{{getSkillBonus("Dexterity", "Sleight of Hand")}}</span></li>
-            <li class="list-group-item"><span style="float: left;">Stealth: </span><span style="float: right;">{{this.getSkillBonus("Dexterity", "Stealth")}}</span>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Dexterity", "Sleight of Hand")}}</span></li>
+            <li class="list-group-item"><span style="float: left;">Stealth: </span><span style="float: right;" [class.proficient] = "proficient">{{this.getSkillBonus("Dexterity", "Stealth")}}</span>
             </li>
         </ul>
     </div>
@@ -59,7 +60,7 @@
     <div class="col">
         <ul class="list-group skillBorder">
             <li class="list-group-item list-group-item-primary"><span style="float: left;">Saving Throw:
-                </span><span style="float: right;">{{getSaveBonus("Constitution")}}</span></li>
+                </span><span style="float: right;" [class.proficient] = "proficient">{{getSaveBonus("Constitution")}}</span></li>
         </ul>
     </div>
 </div>
@@ -101,49 +102,49 @@
     <div class="col">
         <ul class="list-group skillBorder">
             <li class="list-group-item list-group-item-primary"><span style="float: left;">Saving Throw:
-                </span><span style="float: right;">{{getSaveBonus("Intelligence")}}</span></li>
-            <li class="list-group-item"><span style="float: left;">Arcana: </span> <span style="float: right;">{{getSkillBonus("Intelligence", "Arcana")}}</span>
+                </span><span style="float: right;" [class.proficient] = "proficient">{{getSaveBonus("Intelligence")}}</span></li>
+            <li class="list-group-item"><span style="float: left;">Arcana: </span> <span style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Intelligence", "Arcana")}}</span>
             </li>
             <li class="list-group-item"><span style="float: left;">History: </span> <span
-                    style="float: right;">{{getSkillBonus("Intelligence", "History")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Intelligence", "History")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Investigation: </span> <span
-                    style="float: right;">{{getSkillBonus("Intelligence", "Investigation")}}</span></li>
-            <li class="list-group-item"><span style="float: left;">Nature: </span> <span style="float: right;">{{getSkillBonus("Intelligence", "Nature")}}</span>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Intelligence", "Investigation")}}</span></li>
+            <li class="list-group-item"><span style="float: left;">Nature: </span> <span style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Intelligence", "Nature")}}</span>
             </li>
             <li class="list-group-item"><span style="float: left;">Religion: </span> <span
-                    style="float: right;">{{getSkillBonus("Intelligence", "Religion")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Intelligence", "Religion")}}</span></li>
         </ul>
     </div>
     <!-- Wisdom Skills -->
     <div class="col">
         <ul class="list-group skillBorder">
             <li class="list-group-item list-group-item-primary"><span style="float: left;">Saving Throw:
-                </span><span style="float: right;">{{getSaveBonus("Wisdom")}}</span></li>
+                </span><span style="float: right;" [class.proficient] = "proficient">{{getSaveBonus("Wisdom")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Animal Handling: </span><span
-                    style="float: right;">{{getSkillBonus("Wisdom", "Animal Handling")}}</span></li>
-            <li class="list-group-item"><span style="float: left;">Insight: </span><span style="float: right;">{{getSkillBonus("Wisdom", "Insight")}}</span>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Wisdom", "Animal Handling")}}</span></li>
+            <li class="list-group-item"><span style="float: left;">Insight: </span><span style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Wisdom", "Insight")}}</span>
             </li>
             <li class="list-group-item"><span style="float: left;">Medicine: </span><span
-                    style="float: right;">{{getSkillBonus("Wisdom", "Medicine")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Wisdom", "Medicine")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Perception: </span> <span
-                    style="float: right;">{{getSkillBonus("Wisdom", "Perception")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Wisdom", "Perception")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Survival: </span> <span
-                    style="float: right;">{{getSkillBonus("Wisdom", "Survival")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Wisdom", "Survival")}}</span></li>
         </ul>
     </div>
     <!-- Charisma Skills -->
     <div class="col">
         <ul class="list-group skillBorder">
             <li class="list-group-item list-group-item-primary"><span style="float: left;">Saving Throw:
-                </span><span style="float: right;">{{getSaveBonus("Charisma")}}</span></li>
+                </span><span style="float: right;" [class.proficient] = "proficient">{{getSaveBonus("Charisma")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Deception: </span> <span
-                    style="float: right;">{{getSkillBonus("Charisma", "Deception")}}</span></li>
-            <li class="list-group-item"><span style="float: left;">Intimidation: </span> <span
-                    style="float: right;">{{getSkillBonus("Charisma", "Intimidation")}}</span></li>
-            <li class="list-group-item"><span style="float: left;">Performance: </span> <span
-                    style="float: right;">{{getSkillBonus("Charisma", "Performance")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Charisma", "Deception")}}</span></li>
+            <li class="list-group-item"><span style="float: left;" [class.proficient] = "proficient">Intimidation: </span> <span
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Charisma", "Intimidation")}}</span></li>
+            <li class="list-group-item"><span style="float: left;" [class.proficient] = "proficient">Performance: </span> <span
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Charisma", "Performance")}}</span></li>
             <li class="list-group-item"><span style="float: left;">Persuasion: </span> <span
-                    style="float: right;">{{getSkillBonus("Charisma", "Persuasion")}}</span></li>
+                    style="float: right;" [class.proficient] = "proficient">{{getSkillBonus("Charisma", "Persuasion")}}</span></li>
         </ul>
     </div>
 </div>

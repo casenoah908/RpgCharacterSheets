@@ -15,6 +15,8 @@ export class SkillsComponent implements OnInit {
   characterInfo: Character;
   raceInfo: Race;
 
+  proficient: boolean = false;
+
   constructor(private generationService : GenerationService) { }
 
   ngOnInit(): void {
@@ -24,14 +26,24 @@ export class SkillsComponent implements OnInit {
   }
 
   getSkillBonus(stat: string, skill: string){
+    //reset proficiency flag everytime the method is called so one proficiency doesn't color them all
+    //this shifted proficiencies down one.
+    //this.proficiency = false;
     var bonus = 0;
     //iterate over skill proficiency list
     for(let i=0; i<this.characterInfo.getSkillProfs().length; i++){
       if(this.characterInfo.getSkillProfs()[i] == skill){
         //add proficiency bonus if proficient (if expertise, two listings in skillProfs will add twice)
         bonus = bonus + this.characterInfo.getProficiencyBonus();
+        //this.proficiency = true;
       }
     }
+
+
+    // check for expertise next...
+
+
+
     //after checking proficiency, assign statistic based bonus (wisdom, strength, etc.)
     if(stat == 'Strength'){
       bonus = bonus + Math.floor((this.characterInfo.getStrength() - 10) / 2);
@@ -64,11 +76,13 @@ export class SkillsComponent implements OnInit {
 
   getSaveBonus(stat: string){
     var bonus = 0;
+    // this.proficient = false;
     //iterate over saving throw proficiency list
     for(let i=0; i<this.characterInfo.getSavingThrowProfs().length; i++){
       if(this.characterInfo.getSavingThrowProfs()[i] == stat){
         //add proficiency bonus if proficient 
         bonus = bonus + this.characterInfo.getProficiencyBonus();
+        // this.proficient = true;
       }
     }
     //after checking proficiency, assign statistic based bonus (wisdom, strength, etc.)

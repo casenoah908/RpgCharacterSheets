@@ -1,0 +1,14 @@
+.bg{
+    background-color: #ffd59a;
+    height: auto;
+}
+
+.card{
+    width: 40%;
+    align-content: center;
+    margin: auto;
+}
+
+p{
+    text-indent: 25px;
+}

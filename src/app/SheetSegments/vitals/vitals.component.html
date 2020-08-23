@@ -29,6 +29,9 @@
                 <fa-icon [icon]="faHeart" size="lg"></fa-icon>
                 <fa-layers-text content="{{characterInfo.getCurrentHp()}}" transform="shrink-8"></fa-layers-text>
             </fa-layers>
+            <br>
+            <input class="Hp" type="number" id="healthAdjust" value="healthAdjustment" placeholder="0" [(ngModel)]="healthAdjustment">
+            <button class="harm d-inline" (click)="harm()">Harm  </button><button class="heal d-inline" (click)="heal()">  Heal</button>
         </div>
     </div>
     <!-- Temp Hp -->
@@ -36,7 +39,7 @@
         <div>
             TEMP HP:
             <br>
-            {{characterInfo.getTempHp()}}
+            <input class="Hp" type="number" id="tempHp" value="{{characterInfo.getTempHp()}}" placeholder="{{characterInfo.getTempHp()}}" (change)="changeTempHp()" [(ngModel)]="tempHp">
         </div>
     </div>
     <!-- Initiative/speed -->
@@ -80,12 +83,14 @@
             DEATH SAVES:
             <div class="box" style="font-size: medium; border-radius: 7%;">
 
-                    <p class="d-inline">Successes:</p> <input style="margin-left: 3%" type="radio" value="success"><input class="d-inline" type="radio"
-                        value="success"><input type="radio" value="success">
+                    <p class="d-inline">Successes:</p> <input style="margin-left: 3%" type="checkbox" value="success" (change)="changeSuccess($event)"><input class="d-inline" type="checkbox"
+                        value="success"(change)="changeSuccess($event)"><input type="checkbox" value="success" (change)="changeSuccess($event)">
 
 
-                    <p class="d-inline">Failures: </p> <input class="d-inline" style="margin-left: 3%" type="radio" value="failures"><input type="radio"
-                        value="failures"><input type="radio" value="failures">
+                    <p class="d-inline">Failures: </p> <input class="d-inline" style="margin-left: 3%" type="checkbox" value="failures" (change)="changeFailure($event)"><input type="checkbox"
+                        value="failures" (change)="changeFailure($event)"><input type="checkbox" value="failures" (change)="changeFailure($event)">
+                    
+                    <p *ngIf="dead" style="font-size: large; color: red;">You Are Dead!!!</p>
 
             </div>
             
@@ -97,7 +102,7 @@
         <div>
             INSPIRATION:
             <br>
-            <input class="checkbox" type="checkbox" value="inspired">
+            <input class="checkbox" type="checkbox" value="inspired" (change)="toggleInspired($event)">
         </div>
     </div>
 </div>

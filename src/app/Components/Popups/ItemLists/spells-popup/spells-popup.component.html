@@ -1,0 +1,27 @@
+<h1>Select a Spell:</h1>
+<hr>
+<mat-dialog-content>
+    <br>
+    <table id="display-table" class="hoverTable">
+        <thead>
+            <tr>
+                <th>Spells</th>
+                <th>Required Class:</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let spell of spells; let i = index;" (click)="selectSpell(spell, i)" [class.active] = "i == selectedRow">
+                <td>{{spell.name}}</td>
+                <td><p class="d-inline" *ngFor="let class of spell.classes">{{class}}, </p></td>
+            </tr>
+        </tbody>
+
+    </table>
+</mat-dialog-content>
+
+<hr>
+
+<mat-dialog-actions>
+    <button (click)="addSpell()">Add Spell</button>
+</mat-dialog-actions>

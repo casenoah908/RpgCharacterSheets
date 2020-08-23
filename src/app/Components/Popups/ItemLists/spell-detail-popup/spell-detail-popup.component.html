@@ -1,0 +1,15 @@
+<h1>{{spell.name}}</h1>
+<hr>
+<p style="font-style: italic;">Level {{spell.level}} {{spell.school}}</p>
+<h4 class="d-inline">Casting Time: </h4> <p class="d-inline">{{spell.castingTime}}</p>
+<br>
+<h4 class="d-inline">Range: </h4> <p class="d-inline">{{spell.range}}</p>
+<br>
+<h4 class="d-inline">Components: </h4> <p class="d-inline">{{spell.components}}</p>
+<br>
+<h4 class="d-inline">Duration: </h4> <p class="d-inline">{{spell.duration}}</p>
+<br>
+<p>{{spell.description}}</p>
+<hr>
+<p class="d-inline"><strong>Classes: </strong></p><p class="d-inline" *ngFor="let class of spell.classes">{{class}}, </p>
+

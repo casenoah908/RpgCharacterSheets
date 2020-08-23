@@ -7,28 +7,28 @@
 <div class="row pt-4 pb-4">
 
         <h4 class="d-inline">PP</h4>
-        <div class="Tab d-inline">
-            {{characterInfo.getPlatinum()}}
+        <div class="d-inline">
+            <input class="d-inline" type="number" id="PP" value="{{characterInfo.getPlatinum()}}" placeholder="{{characterInfo.getPlatinum()}}" (change)="changePlatinum()" [(ngModel)]="platinum">
         </div>
 
         <h4 class="d-inline">GP</h4>
-        <div class="Tab d-inline">
-            {{characterInfo.getGold()}}
+        <div class="d-inline">
+            <input class="d-inline" type="number" id="GP" value="{{characterInfo.getGold()}}" placeholder="{{characterInfo.getGold()}}" (change)="changeGold()" [(ngModel)]="gold">
         </div>
 
         <h4 class="d-inline">EP</h4>
-        <div class="Tab d-inline">
-            {{characterInfo.getElectrum()}}
+        <div class="d-inline">
+            <input class="d-inline" type="number" id="EP" value="{{characterInfo.getElectrum()}}" placeholder="{{characterInfo.getElectrum()}}" (change)="changeElectrum()" [(ngModel)]="electrum">
         </div>
 
         <h4 class="d-inline">SP</h4>
-        <div class="Tab d-inline">
-            {{characterInfo.getSilver()}}
+        <div class="d-inline">
+            <input class="d-inline" type="number" id="SP" value="{{characterInfo.getSilver()}}" placeholder="{{characterInfo.getSilver()}}" (change)="changeSilver()" [(ngModel)]="silver">
         </div>
 
         <h4 class="d-inline">CP</h4>
-        <div class="Tab d-inline">
-            {{characterInfo.getCopper()}}
+        <div class="d-inline">
+            <input class="d-inline" type="number" id="CP" value="{{characterInfo.getCopper()}}" placeholder="{{characterInfo.getCopper()}}" (change)="changeCopper()" [(ngModel)]="copper">
         </div>
 
 </div>
@@ -38,38 +38,70 @@
 <div class="row pt-3 list">
     <div class="col">
         <h5>Armor</h5>
-        <ul *ngFor="let armor of characterInfo.getArmors()">
-            <li>{{armor.name}}</li>
+        <ul *ngFor="let armor of characterInfo.getArmors(); let i=index">
+            <li *ngIf="equippedArmor==armor || equippedShield==armor">{{armor.name}} (equipped)<a class="removal d-inline" (click)="removeArmor(i)">-</a></li>
+            <li *ngIf="equippedArmor!=armor && equippedShield!=armor">{{armor.name}}<a class="removal d-inline" (click)="removeArmor(i)">-</a></li>
+            <a class="equip d-inline" (click)="equipArmor(characterInfo.getArmors()[i])">Equip</a><a class="unequip d-inline" (click)="unequipArmor(characterInfo.getArmors()[i])">Unequip</a>
         </ul>
         <a (click)="addArmor()">+add</a>
     </div>
     <div class="col">
         <h5>Weapons</h5>
-        <ul *ngFor="let weapon of characterInfo.getWeapons()">
-            <li>{{weapon.name}}</li>
+        <ul *ngFor="let weapon of characterInfo.getWeapons(); let i=index">
+            <li>{{weapon.name}}<a class="removal d-inline" (click)="removeWeapon(i)">-</a></li>
         </ul>
     </div>
     <div class="col">
         <h5>Packs</h5>
-        <ul *ngFor="let pack of characterInfo.getPacks()">
-            <li>{{pack}}</li>
+        <ul *ngFor="let pack of characterInfo.getPacks(); let i=index">
+            <li>{{pack}}<a class="removal d-inline" (click)="removePack(i)">-</a></li>
         </ul>
         <a (click)="addPack()">+add</a>
     </div>
 </div>
 
+
+
+<!-- Proficiencies -->
+<div class="row list">
+    <div class="col">
+        <h5>Armor Proficiencies</h5>
+        <ul *ngFor="let armorProf of characterInfo.getArmorProfs(); let i=index">
+            <li>{{armorProf}}<a class="removal d-inline" (click)="removeArmorProf(i)">-</a></li>
+        </ul>
+        <a (click)="addArmorProf()">+add</a>
+    </div>
+    <div class="col">
+        <h5>Weapon Proficiencies</h5>
+        <ul *ngFor="let weaponProf of characterInfo.getWeaponProfs(); let i=index">
+            <li>{{weaponProf}}<a class="removal d-inline" (click)="removeWeaponProf(i)">-</a></li>
+        </ul>
+        <a (click)="addWeaponProf()">+add</a>
+    </div>
+    <div class="col">
+        <h5>Tool Proficiencies</h5>
+        <ul *ngFor="let toolProf of characterInfo.getToolProfs(); let i=index">
+            <li>{{toolProf}}<a class="removal d-inline" (click)="removeToolProf(i)">-</a></li>
+        </ul>
+        <a (click)="addToolProf()">+add</a>
+    </div>
+</div>
+
+
+
+
 <div class="row list">
     <div class="col">
         <h5>Languages</h5>
-        <ul *ngFor="let language of characterInfo.getLanguages()">
-            <li>{{language}}</li>
+        <ul *ngFor="let language of characterInfo.getLanguages(); let i=index">
+            <li>{{language}}<a class="removal d-inline" (click)="removeLanguage(i)">-</a></li>
         </ul>
         <a (click)="addLanguage()">+add</a>
     </div>
     <div class="col">
         <h5>Other</h5>
-        <ul *ngFor="let other of characterInfo.getOthers()">
-            <li>{{other}}</li>
+        <ul *ngFor="let other of characterInfo.getOthers(); let i=index">
+            <li>{{other}}<a class="removal d-inline" (click)="removeOther(i)">-</a></li>
         </ul>
         <a (click)="addOther()">+add</a>
     </div>
@@ -80,52 +112,25 @@
 
 
 
-<!-- Proficiencies -->
-<div class="row list">
-    <div class="col">
-        <h5>Armor Proficiencies</h5>
-        <ul *ngFor="let armorProf of characterInfo.getArmorProfs()">
-            <li>{{armorProf}}</li>
-        </ul>
-        <a (click)="addArmorProf()">+add</a>
-    </div>
-    <div class="col">
-        <h5>Weapon Proficiencies</h5>
-        <ul *ngFor="let weaponProf of characterInfo.getWeaponProfs()">
-            <li>{{weaponProf}}</li>
-        </ul>
-        <a (click)="addWeaponProf()">+add</a>
-    </div>
-    <div class="col">
-        <h5>Tool Proficiencies</h5>
-        <ul *ngFor="let toolProf of characterInfo.getToolProfs()">
-            <li>{{toolProf}}</li>
-        </ul>
-        <a (click)="addToolProf()">+add</a>
-    </div>
-</div>
-
-
-
 <!-- Character Traits -->
 <div class="row p-2">
     <div class="col">
         <h5>Personality Traits</h5>
-        <textarea placeholder="Write whatever you want here.">{{characterInfo.getPersonalityTraits()}}</textarea>
+        <textarea placeholder="Write whatever you want here." (change)="changePersonality()" [(ngModel)]="personality">{{characterInfo.getPersonalityTraits()}}</textarea>
     </div>
     <div class="col">
         <h5>Ideals</h5>
-        <textarea placeholder="Write whatever you want here.">{{characterInfo.getIdeals()}}</textarea>
+        <textarea placeholder="Write whatever you want here." (change)="changeIdeals()" [(ngModel)]="ideals">{{characterInfo.getIdeals()}}</textarea>
     </div>
 </div>
 
 <div class="row p-2 separator">
     <div class="col">
         <h5>Bonds</h5>
-        <textarea placeholder="Write whatever you want here.">{{characterInfo.getBonds()}}</textarea>
+        <textarea placeholder="Write whatever you want here." (change)="changeBonds()" [(ngModel)]="bonds">{{characterInfo.getBonds()}}</textarea>
     </div>
     <div class="col">
         <h5>Flaws</h5>
-        <textarea placeholder="Write whatever you want here.">{{characterInfo.getFlaws()}}</textarea>
+        <textarea placeholder="Write whatever you want here." (change)="changeFlaws()" [(ngModel)]="flaws">{{characterInfo.getFlaws()}}</textarea>
     </div>
 </div>

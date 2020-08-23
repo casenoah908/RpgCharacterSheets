@@ -1,0 +1,24 @@
+<div class="bg">
+    <div class="container-fluid w-75 pt-5 pb-5">
+        <mat-card class="card1 card">
+          <mat-card-header>
+            <mat-card-title>
+              <h1>Login!</h1>
+            </mat-card-title>
+          </mat-card-header>
+    
+          <hr>
+    
+          <mat-card-content>
+            Username: <input type="text" name="username" id="username" [(ngModel)]="username">
+            <br><br>
+            Password: <input type="password" name="password" id="password" [(ngModel)]="password">
+            <br><br>
+            <button (click)="login()">Login</button>
+            <br><br>
+            Or:   <a (click)="createAccount()">Create an Account</a>
+            <p *ngIf="displayError">User and Password combination is not stored in records.</p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+</div>

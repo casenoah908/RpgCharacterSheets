@@ -1,4 +1,12 @@
 <div class="bg">
+
+  <div class="container-fluid w-75 pt-5 pb-5">
+    <!-- List characters owned by user -->
+    <ul *ngFor="let character of characters">
+      <li>{{character.getName()}}</li>
+    </ul>
+  </div>
+
   <div class="container-fluid w-75 pt-5 pb-5">
     <!-- Popup Tutorial -->
     <mat-card class="card1">

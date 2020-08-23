@@ -16,3 +16,10 @@ input{
     width: 60%;
     text-align: right;
 }
+fa-icon{
+    color: green;
+}
+fa-icon:hover{
+    color: green;
+    cursor: pointer;
+}

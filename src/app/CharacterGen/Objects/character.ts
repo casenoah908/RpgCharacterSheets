@@ -1,5 +1,6 @@
 import { Weapon } from "../Assets/Items/weapon";
 import { Armor } from '../Assets/Items/armor';
+import { Spell } from '../Assets/Spells/Spell';
 import { summaryForJitFileName } from '@angular/compiler/src/aot/util';
 import { stringify } from '@angular/compiler/src/util';
 
@@ -10,7 +11,13 @@ export class Character {
 
     // constructor at bottom
 
-
+    private userId: number;
+    getUser(){
+        return this.userId;
+    }
+    setUser(value: number){
+        this.userId = value;
+    }
     // ------ //
     // HEADER //
     // ------ //
@@ -150,6 +157,14 @@ export class Character {
     }
     setHitDice(value: number) {
         this.hit_dice = value;
+    }
+
+    private inpsired: boolean;
+    getInspired(){
+        return this.inpsired;
+    }
+    setInspired(value: boolean){
+        this.inpsired = value;
     }
 
 
@@ -351,24 +366,6 @@ export class Character {
     addArmor(value: Armor) {
         this.armors.push(value);
     }
-    //REMOVE METHOD NOT USED!!!
-    // removeArmor(value: string) {
-    //     var currentArmor: string;
-    //     var newArmors: Array<string> = [];
-    //     //go through entire temporary armors
-    //     for(let i=0; i<this.armors.length; i++) {
-    //         currentArmor = this.armors.pop();
-    //         //current prof is to be removed,
-    //         if (currentArmor == value) {
-    //             //dont push into new list
-    //         } else { //if current prof isnt to be removed
-    //             //push currentProf to new list
-    //             newArmors.push(currentArmor);
-    //         }
-    //     }
-    //     //reset skillProfs to newProfs list
-    //     this.armors = newArmors;
-    // }
 
     private packs: Array<string>;
     getPacks() {
@@ -380,24 +377,6 @@ export class Character {
     addPack(value: string) {
         this.packs.push(value);
     }
-    //REMOVE METHOD NOT USED!!!
-    // removePack(value: string) {
-    //     var currentPack: string;
-    //     var newPack: Array<string> = [];
-    //     //go through entire temporary armors
-    //     for(let i=0; i<this.packs.length; i++) {
-    //         currentPack = this.packs.pop();
-    //         //current prof is to be removed,
-    //         if (currentPack == value) {
-    //             //dont push into new list
-    //         } else { //if current prof isnt to be removed
-    //             //push currentProf to new list
-    //             newPack.push(currentPack);
-    //         }
-    //     }
-    //     //reset skillProfs to newProfs list
-    //     this.packs = newPack;
-    // }
 
     private languages: Array<string>;
     getLanguages() {
@@ -428,6 +407,9 @@ export class Character {
     setArmorProfs(value: Array<string>) {
         this.armorProfs = value;
     }
+    addArmorProf(value: string){
+        this.armorProfs.push(value);
+    }
 
     private weaponProfs: Array<string>;
     getWeaponProfs() {
@@ -439,6 +421,9 @@ export class Character {
     setWeaponProfs(value: Array<string>) {
         this.weaponProfs = value;
     }
+    addWeaponProf(value: string){
+        this.weaponProfs.push(value);
+    }
 
     private toolProfs: Array<string>;
     getToolProfs() {
@@ -446,6 +431,9 @@ export class Character {
     }
     setToolProfs(value: Array<string>) {
         this.toolProfs = value;
+    }
+    addToolProf(value: string){
+        this.toolProfs.push(value);
     }
 
     private personalityTraits: string;
@@ -539,12 +527,80 @@ export class Character {
         this.spellTable = value;
     }
 
-    private spells: Array<string>;
+    private spells: Array<Array<Spell>>;
     getSpells() {
         return this.spells;
     }
-    setSpells(value: Array<string>) {
+    setSpells(value: Array<Array<Spell>>) {
         this.spells = value;
+    }
+    addSpell(value: Spell, index: number){
+        this.spells[index].push(value);
+    }
+
+    private slots1: number;
+    getSlots1(){
+        return this.slots1;
+    }
+    setSlots1(value: number){
+        this.slots1 = value;
+    }
+
+    private slots2: number;
+    getSlots2(){
+        return this.slots2;
+    }
+    setSlots2(value: number){
+        this.slots2 = value;
+    }
+    private slots3: number;
+    getSlots3(){
+        return this.slots3;
+    }
+    setSlots3(value: number){
+        this.slots3 = value;
+    }
+    private slots4: number;
+    getSlots4(){
+        return this.slots4;
+    }
+    setSlots4(value: number){
+        this.slots4 = value;
+    }
+    private slots5: number;
+    getSlots5(){
+        return this.slots5;
+    }
+    setSlots5(value: number){
+        this.slots5 = value;
+    }
+    private slots6: number;
+    getSlots6(){
+        return this.slots6;
+    }
+    setSlots6(value: number){
+        this.slots6 = value;
+    }
+    private slots7: number;
+    getSlots7(){
+        return this.slots7;
+    }
+    setSlots7(value: number){
+        this.slots7 = value;
+    }
+    private slots8: number;
+    getSlots8(){
+        return this.slots8;
+    }
+    setSlots8(value: number){
+        this.slots8 = value;
+    }
+    private slots9: number;
+    getSlots9(){
+        return this.slots9;
+    }
+    setSlots9(value: number){
+        this.slots9 = value;
     }
 
 
@@ -580,7 +636,7 @@ export class Character {
 
     constructor(role: string, classImageUrl: string, hit_dice: number, armors: Array<Armor>, weapons: Array<Weapon>, packs: Array<string>, others: Array<string>, savingThrowProfs: Array<string>, weaponProfs: Array<string>, armorProfs: Array<string>, toolProfs: Array<string>, spellcastingAbility: string, spellTable: Array<Array<number>>) {
         //comments by each property label what they are determined by. If none, it's a default value for everyone
-
+        this.userId = null;
         // Header Component (COMPLETE)
         this.name = ""; //user input
         this.race = ""; //user input
@@ -601,6 +657,7 @@ export class Character {
         this.speed = 0; //race
         this.passive_wisdom = 0; //skills
         this.hit_dice = hit_dice; //class
+        this.inpsired = false; //user input
 
         // // skills component
         this.proficiency_bonus = 2;
@@ -645,7 +702,16 @@ export class Character {
         this.spellSaveDC = 0; // skills and spellcasting ability
         this.spellAttackBonus = 0; //skills and spellcasting ability
         this.spellTable = spellTable; //level (contains cantrips known, spells known, and spell slots)
-        this.spells = []; //user input post creation
+        this.spells = [[],[],[],[],[],[],[],[],[],[]]; //user input post creation
+        this.slots1 = 0;
+        this.slots2 = 0;
+        this.slots3 = 0;
+        this.slots4 = 0;
+        this.slots5 = 0;
+        this.slots6 = 0;
+        this.slots7 = 0;
+        this.slots8 = 0;
+        this.slots9 = 0;
 
         // Class abilities component
         this.classTraits = []; //user input

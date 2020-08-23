@@ -45,11 +45,55 @@ p{
 }
 a{
     margin-left: 9%;
-    color: #FCF4A3;
+    color: green;
 }
 a:hover{
     margin-left: 9%;
-    color: #FCF4A3;
+    color: green;
     cursor: pointer;
     text-decoration: underline;
+}
+input{
+    width: 40%;
+    text-align: right;
+    margin-left: 2%;
+    height: 110%;
+    font-size: larger;
+}
+h4{
+    font-size: xx-large;
+}
+.removal{
+    padding-top: 2%;
+    margin-left: 2%;
+    color: rgb(187, 9, 9);
+    font-size: xx-large;
+    font-weight: bolder;
+}
+.removal:hover{
+    padding-top: 2%;
+    margin-left: 2%;
+    color: rgb(187, 9, 9);
+    font-size: xx-large;
+    font-weight: bolder;
+}
+
+li{
+    font-size: larger;
+}
+.equip{
+    margin-left: 4%;
+}
+.unequip{
+    margin-left: 4%;
+    color: rgb(187, 9, 9);
+}
+.unequip:hover{
+    margin-left: 4%;
+    color: rgb(187, 9, 9);
+    cursor: pointer;
+    text-decoration: underline;
+}
+.equip:hover{
+    margin-left: 4%;
 }

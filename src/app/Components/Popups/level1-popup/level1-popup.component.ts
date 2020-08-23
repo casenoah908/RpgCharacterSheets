@@ -11,6 +11,7 @@ import { Race } from 'src/app/CharacterGen/Objects/race';
 import { Router } from '@angular/router';
 
 import { GenerationService } from '../../../CharacterGen/generation.service';
+import { DatabaseService } from '../../../database.service';
 import { ClassTrait } from 'src/app/CharacterGen/Objects/classTrait';
 
 @Component({
@@ -20,7 +21,7 @@ import { ClassTrait } from 'src/app/CharacterGen/Objects/classTrait';
 })
 export class Level1PopupComponent implements OnInit {
 
-  constructor(private generationService: GenerationService, @Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<Level1PopupComponent>, private router: Router) { }
+  constructor(private generationService: GenerationService, private dataService: DatabaseService, @Inject(MAT_DIALOG_DATA) public data, public thisDialogRef: MatDialogRef<Level1PopupComponent>, private router: Router) { }
 
   requirements: Requirements;
   character: Character;
@@ -32,6 +33,11 @@ export class Level1PopupComponent implements OnInit {
   selectedChoices: Array<string> = [];
   selectedChoice1: string;
   selectedChoice2: string;
+
+  allCharacters: Character[];
+  characters: Character[];
+  characterCount: number;
+  user: User;
 
   ngOnInit(): void {
     this.requirements = this.data.dialogRequirements;
@@ -49,6 +55,23 @@ export class Level1PopupComponent implements OnInit {
     if (this.requirements.level1Traits[1] != null) {
       this.selectedChoice2 = "placeholder";
     }
+
+    //database
+    this.user = this.dataService.getUserInfo();
+    this.fetchData();
+    //push all characters into characters[] where user.id matches character userId
+    for(let i=0; i<this.characterCount; i++){
+      if(this.allCharacters[i].getUser() == this.user.id){
+        this.characters.push(this.allCharacters[i]);
+      }
+    }
+  }
+
+  fetchData(){
+    this.dataService.getCharacters().subscribe(data =>{
+      this.allCharacters = data;
+      this.characterCount = this.allCharacters.length;
+    })
   }
 
 
@@ -83,6 +106,13 @@ export class Level1PopupComponent implements OnInit {
       this.thisDialogRef.close();
 
       this.generationService.finalizeCharacter(this.character, this.raceInfo);
+      this.character.addWeaponProf("unarmed strikes");
+      this.generationService.setLanguages(this.character, this.raceInfo);
+      //add character to database
+      this.dataService.addCharacter(this.character).subscribe(data => {
+        console.log(data);
+        this.fetchData();
+      });
       //send character and raceInfo to generation service
       this.generationService.holdInfo(this.character, this.raceInfo);
       //Then, navigate to sheet, where on the sheet the character is grabbed by an id that is passed through router

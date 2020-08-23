@@ -45,6 +45,11 @@ export class GenerationService {
     attackBonuses: Array<number> = [];
 
 
+
+    //-------------------------------//
+    //--- Character Instantiation ---//
+    //-------------------------------//
+
     // Pass "menu" of requirements
     // searches through ClassCharData for a Character object that matches 
     // the class/role, and assigns it to a character variable that gets
@@ -81,11 +86,16 @@ export class GenerationService {
     };
 
 
+
+
+    //------------------------------//
+    //--- Character Finalization ---//
+    //------------------------------//
+
     //takes a character object from final popup and sets any remaining values left to be assigned
     finalizeCharacter(passedCharacter: Character, passedRace: Race) {
         //character object
         var character = passedCharacter;
-        var race = passedRace;
         //statMods
         var strengthMod = (Math.floor((character.getStrength() - 10) / 2));
         var dexterityMod = (Math.floor((character.getDexterity() - 10) / 2));
@@ -112,6 +122,9 @@ export class GenerationService {
         else if (character.getEquippedArmor().classification == 'Heavy Armor') {
             character.setArmorClass(character.getEquippedArmor().armorClass);
         }
+        else{
+            character.setArmorClass(10);
+        }
 
         //max hp
         character.setMaxHp(character.getHitDice() + constitutionMod); //hit dice max + constitution mod, uses max hp for 1st character
@@ -136,20 +149,6 @@ export class GenerationService {
 
         //weapons (retrieving bonuses and types)
         this.createBonusArrays(character);
-
-        //languages
-        for (let i = 0; i < race.languages.length; i++) {
-            var languageSpoken = false;
-            //Only add if the language isn't already spoken
-            for (let l = 0; l < character.getLanguages().length; l++) {
-                if (race.languages[i] == character.getLanguages()[i]) {
-                    languageSpoken = true;
-                }
-            }
-            if (!languageSpoken) {
-                character.addLanguages(race.languages[i]);
-            }
-        }
 
 
         //SPELLS (determined by spellcasting ability)
@@ -178,6 +177,17 @@ export class GenerationService {
 
     };
 
+    //Language cannot be done in finalize character or else languages will be added to every time they're removed and then it's called
+    setLanguages(passedCharacter: Character, passedRace: Race){
+        //character object
+        var character = passedCharacter;
+        var race = passedRace;
+        //languages
+        for (let i = 0; i < race.languages.length; i++) {
+            character.addLanguages(race.languages[i]);
+        }
+    }
+
     //hold character and race info for passing between routers
     holdInfo(characterInfo: Character, raceInfo: Race) {
         this.characterInfo = characterInfo;
@@ -190,6 +200,13 @@ export class GenerationService {
     getPassedRaceInfo() {
         return this.raceInfo;
     };
+
+
+
+
+    //-----------------//
+    //--- Equipment ---//
+    //-----------------//
 
     addEquipment(splitString: Array<string>, character: Character) {
         //iterate over splitString (one passed item at a time)
@@ -221,7 +238,11 @@ export class GenerationService {
                     found = true;
                     //add to armors from ArmorList in order to have full armor object in character's data
                     character.addArmor(ArmorsList[a]);
-                    character.setEquippedArmor(ArmorsList[a]);
+                    //if it's not a shield, equip it
+                    if(!ArmorsList[a].name.toLowerCase().includes('shield')){
+                        character.setEquippedArmor(ArmorsList[a]);
+                    }
+                    
                     //return so program stops checking armors
                 }
             }
@@ -273,21 +294,21 @@ export class GenerationService {
             if (profList[i].toLowerCase().includes('simple weapon')) {
                 //add simple weapons to profList
                 for (let i = 0; i < this.simpleWeaponList.length; i++) {
-                    profList.push(this.simpleWeaponList[i].name.toLowerCase());
+                    profList.push(this.simpleWeaponList[i].name.toLowerCase() + "s");
                 }
             }
             //check for simple melee weapon
             if (profList[i].toLowerCase().includes('simple melee weapon')) {
                 //add simple melee weapons to profList
                 for (let i = 0; i < this.simpleMeleeWeaponList.length; i++) {
-                    profList.push(this.simpleMeleeWeaponList[i].name.toLowerCase());
+                    profList.push(this.simpleMeleeWeaponList[i].name.toLowerCase() + "s");
                 }
             }
             //check for simple ranged weapon
             if (profList[i].toLowerCase().includes('simple ranged weapon')) {
                 //add simple ranged weapons to profList
                 for (let i = 0; i < this.simpleRangedWeaponList.length; i++) {
-                    profList.push(this.simpleRangedWeaponList[i].name.toLowerCase());
+                    profList.push(this.simpleRangedWeaponList[i].name.toLowerCase() + "s");
                 }
             }
 
@@ -296,21 +317,21 @@ export class GenerationService {
             if (profList[i].toLowerCase().includes('martial weapon')) {
                 //add simple weapons to profList
                 for (let i = 0; i < this.martialWeaponList.length; i++) {
-                    profList.push(this.martialWeaponList[i].name.toLowerCase());
+                    profList.push(this.martialWeaponList[i].name.toLowerCase() + "s");
                 }
             }
             //check for martial melee weapon
             if (profList[i].toLowerCase().includes('martial melee weapon')) {
                 //add martial melee weapons to profList
                 for (let i = 0; i < this.martialMeleeWeaponList.length; i++) {
-                    profList.push(this.martialMeleeWeaponList[i].name.toLowerCase());
+                    profList.push(this.martialMeleeWeaponList[i].name.toLowerCase() + "s");
                 }
             }
             //check for martial ranged weapon
             if (profList[i].toLowerCase().includes('martial ranged weapon')) {
                 //add martial ranged weapons to profList
                 for (let i = 0; i < this.martialRangedWeaponList.length; i++) {
-                    profList.push(this.martialRangedWeaponList[i].name.toLowerCase());
+                    profList.push(this.martialRangedWeaponList[i].name.toLowerCase() + "s");
                 }
             }
         }
@@ -318,7 +339,8 @@ export class GenerationService {
 
         //if weapon name equals a weapon name in profList, return true
         for (let i = 0; i < profList.length; i++) {
-            if (profList[i].toLowerCase().includes(weapon.name.toLowerCase())) {
+            //cut off the plurality ("s") from the proficiency
+            if (profList[i].substring(0,profList[i].length -1).toLowerCase()===(weapon.name.toLowerCase())) {
                 proficient = true;
             }
         }
@@ -328,7 +350,12 @@ export class GenerationService {
     }
 
     createBonusArrays(character: Character) {
-
+        //clear prof bonuses and list everytime it's called, and reset attack bonuses and damage bonuses
+        this.profBonuses = [];
+        this.statBonuses = [];
+        this.attackBonuses = [];
+        // this.characterInfo.setAttackBonuses( [] );
+        // this.characterInfo.setDamageBonuses( [] );
         //create array of profBonuses to add to weapons
         for (let i = 0; i < character.getWeapons().length; i++) {
             if (!(character.getWeapons()[i].name.includes('simple')) && !(character.getWeapons()[i].name.includes('martial'))) {
